@@ -13,4 +13,8 @@ public class Action {
 	public void run() {
 		// TODO implementation
 	}
+	
+	public String getCommand() {
+		return this.command;
+	}
 }
