@@ -22,24 +22,6 @@ public class SoftwarePackage extends Package {
 		this.softwares = softwares;
 		this.logger = SoftwarePackageLogger.getInstance();
 	}
-
-	@Override
-	public PackageMetadata getMetadata() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Script getInstallScript() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Script getUninstallScript() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	public List<String> getListOfSoftwares() {
 		return new ArrayList<String>(this.softwares);

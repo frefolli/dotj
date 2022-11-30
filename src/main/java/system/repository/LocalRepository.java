@@ -33,7 +33,8 @@ public class LocalRepository extends Repository {
 	public void removePackage(String packageName) throws PackageNotFoundException {
 		if (this.packages.containsKey(packageName)) {
 			this.packages.remove(packageName);
+		} else {
+			throw new PackageNotFoundException(packageName);
 		}
-		throw new PackageNotFoundException(packageName);
 	}
 }
