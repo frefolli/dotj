@@ -2,7 +2,7 @@
 <project>
     <modelVersion>4.0.0</modelVersion>
     <groupId>frefolli</groupId>
-    <artifactId>dpcm</artifactId>
+    <artifactId>dotj</artifactId>
     <version>1</version>
     
     <packaging>jar</packaging>
@@ -11,6 +11,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <sonar.host.url>http://localhost:9000</sonar.host.url>
         <sonar.coverage.jacoco.xmlReportPaths>${project.reporting.outputDirectory}/jacoco-ut/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+        <sonar.projectKey>dotj</sonar.projectKey>
     </properties>
 
     <dependencyManagement>

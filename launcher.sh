@@ -15,6 +15,7 @@ function loadSecrets () {
 function goal_sonar () {
     loadSecrets
     GOAL_SONAR="$GOAL_SONAR -Dsonar.login=$SONAR_TOKEN"
+    echo -e $GOAL_SONAR
     mvn $GOAL_SONAR
 }
 
