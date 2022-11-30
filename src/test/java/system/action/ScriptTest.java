@@ -22,7 +22,7 @@ public class ScriptTest {
 		assertTrue(script.getActions().equals(actions));
 		Action action = new Action("ls");
 		try {
-			script.append(action);
+			script.appendAction(action);
 		} catch(ActionAlreadyInScriptException error) {
 			fail("should be able to add action");
 		}
@@ -30,7 +30,7 @@ public class ScriptTest {
 		assertTrue(script.getNumberOfActions() == 1);
 		assertTrue(script.getAction(0).equals(action));
 		try {
-			script.remove(action);
+			script.removeAction(action);
 			assertTrue(!(script.getActions().contains(action)));
 		} catch(ActionNotFoundException error) {
 			fail("should be able to remove action");
@@ -43,7 +43,7 @@ public class ScriptTest {
 		Script script = new Script();
 		Action action = new Action("ps");
 		try {
-			script.remove(action);
+			script.removeAction(action);
 			fail("should not be able to remove action");
 		} catch(ActionNotFoundException error) {}
 	}
@@ -54,12 +54,12 @@ public class ScriptTest {
 		Script script = new Script();
 		Action action = new Action("ps");
 		try {
-			script.append(action);
+			script.appendAction(action);
 		} catch(ActionAlreadyInScriptException error) {
 			fail("should be able to add action");
 		}
 		try {
-			script.append(action);
+			script.appendAction(action);
 			fail("should not be able to add action twice");
 		} catch(ActionAlreadyInScriptException error) {}
 	}
@@ -68,7 +68,7 @@ public class ScriptTest {
 	public void testRun() {
 		Script script = new Script();
 		try {
-			script.append(new Action("ls"));
+			script.appendAction(new Action("ls"));
 		} catch(ActionAlreadyInScriptException error) {
 			fail("should be able to add action");
 		}

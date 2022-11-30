@@ -35,7 +35,7 @@ public class Script {
 		return this.actions.get(index);
 	}
 	
-	public void append(Action action) throws ActionAlreadyInScriptException {
+	public void appendAction(Action action) throws ActionAlreadyInScriptException {
 		if (this.actions.contains(action)) {
 			throw new ActionAlreadyInScriptException(action);
 		} else {
@@ -43,7 +43,7 @@ public class Script {
 		}
 	}
 	
-	public void remove(Action action) throws ActionNotFoundException {
+	public void removeAction(Action action) throws ActionNotFoundException {
 		if (this.actions.contains(action)) {
 			this.actions.remove(action);
 		} else {

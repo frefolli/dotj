@@ -27,11 +27,11 @@ public class SoftwarePackage extends Package {
 		return new ArrayList<String>(this.softwares);
 	}
 	
-	public String get(int index) {
+	public String getSoftware(int index) {
 		return this.softwares.get(index);
 	}
 	
-	public void append(String software) throws SoftwareAlreadyInPackageException {
+	public void appendSoftware(String software) throws SoftwareAlreadyInPackageException {
 		if (this.softwares.contains(software)) {
 			throw new SoftwareAlreadyInPackageException(software);
 		} else {
@@ -39,7 +39,7 @@ public class SoftwarePackage extends Package {
 		}
 	}
 	
-	public void remove(String software) throws SoftwareNotFoundException {
+	public void removeSoftware(String software) throws SoftwareNotFoundException {
 		if (this.softwares.contains(software)) {
 			this.softwares.remove(software);
 		} else {

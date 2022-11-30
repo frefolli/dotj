@@ -49,18 +49,18 @@ public class FilePackageTest {
 	public void testGetFile() {
 		FilePackage filePackage = this.craftSampleFilePackage();
 		try {
-			filePackage.get("random-file");
+			filePackage.getFile("random-file");
 			fail("should not be able to get file");
 		} catch (FileNotFoundException e) {}
 		
 		try {
-			filePackage.add("1", "file1");
+			filePackage.addFile("1", "file1");
 		} catch (FileAlreadyInPackageException e1) {
-			fail("should be able to get file");
+			fail("should be able to add file");
 		}
 		
 		try {
-			filePackage.get("1");
+			filePackage.getFile("1");
 		} catch (FileNotFoundException e) {
 			fail("should not be able to get file");
 		}
@@ -70,14 +70,14 @@ public class FilePackageTest {
 	public void testAddFile() {
 		FilePackage filePackage = this.craftSampleFilePackage();
 		try {
-			filePackage.add("1", "file1");
+			filePackage.addFile("1", "file1");
 		} catch (FileAlreadyInPackageException e1) {
-			fail("should be able to get file");
+			fail("should be able to add file");
 		}
 		
 		try {
-			filePackage.add("1", "file2");
-			fail("should not be able to get file");
+			filePackage.addFile("1", "file2");
+			fail("should not be able to add file");
 		} catch (FileAlreadyInPackageException e) {}
 	}
 	
@@ -85,19 +85,19 @@ public class FilePackageTest {
 	public void testRemoveFile() {
 		FilePackage filePackage = this.craftSampleFilePackage();
 		try {
-			filePackage.add("1", "file1");
+			filePackage.addFile("1", "file1");
 		} catch (FileAlreadyInPackageException e1) {
-			fail("should be able to get file");
+			fail("should be able to add file");
 		}
 		
 		try {
-			filePackage.remove("1");
+			filePackage.removeFile("1");
 		} catch (FileNotFoundException e) {
 			fail("should be able to remove file");
 		}
 		
 		try {
-			filePackage.remove("1");
+			filePackage.removeFile("1");
 			fail("should not be able to remove file");
 		} catch (FileNotFoundException e) {}
 	}

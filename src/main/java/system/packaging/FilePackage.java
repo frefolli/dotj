@@ -28,7 +28,7 @@ public class FilePackage extends Package {
 		return new TreeMap<String, String>(this.files);
 	}
 	
-	public String get(String fileEntry) throws FileNotFoundException {
+	public String getFile(String fileEntry) throws FileNotFoundException {
 		if (this.files.containsKey(fileEntry)) {
 			return this.files.get(fileEntry);
 		} else {
@@ -36,15 +36,15 @@ public class FilePackage extends Package {
 		}
 	}
 	
-	public void add(String fileEntry, String file) throws FileAlreadyInPackageException {
+	public void addFile(String fileEntry, String fileDestination) throws FileAlreadyInPackageException {
 		if (this.files.containsKey(fileEntry)) {
 			throw new FileAlreadyInPackageException(fileEntry);
 		} else {
-			this.files.put(fileEntry, file);
+			this.files.put(fileEntry, fileDestination);
 		}
 	}
 	
-	public void remove(String fileEntry) throws FileNotFoundException {
+	public void removeFile(String fileEntry) throws FileNotFoundException {
 		if (this.files.containsKey(fileEntry)) {
 			this.files.remove(fileEntry);
 		} else {

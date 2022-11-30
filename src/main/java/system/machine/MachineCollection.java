@@ -28,7 +28,7 @@ public class MachineCollection {
 		}
 	}
 	
-	public void add(String machineName, Machine machine) throws MachineAlreadyInCollectionException {
+	public void addMachine(String machineName, Machine machine) throws MachineAlreadyInCollectionException {
 		if (this.machines.containsKey(machineName)) {
 			throw new MachineAlreadyInCollectionException(machineName);
 		} else {
@@ -36,7 +36,7 @@ public class MachineCollection {
 		}
 	}
 	
-	public void remove(String machineName) throws MachineNotFoundException {
+	public void removeMachine(String machineName) throws MachineNotFoundException {
 		if (this.machines.containsKey(machineName)) {
 			this.machines.remove(machineName);
 		} else {

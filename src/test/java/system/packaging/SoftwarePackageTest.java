@@ -49,24 +49,24 @@ public class SoftwarePackageTest {
 	public void testGet() {
 		SoftwarePackage softwarePackage = this.craftSampleSoftwarePackage();
 		try {
-			softwarePackage.append("1");
+			softwarePackage.appendSoftware("1");
 		} catch (SoftwareAlreadyInPackageException e) {
 			fail("should be able to add software to package");
 		}
-		assertEquals("1", softwarePackage.get(0));
+		assertEquals("1", softwarePackage.getSoftware(0));
 	}
 	
 	@Test
 	public void testAppend() {
 		SoftwarePackage softwarePackage = this.craftSampleSoftwarePackage();
 		try {
-			softwarePackage.append("1");
+			softwarePackage.appendSoftware("1");
 		} catch (SoftwareAlreadyInPackageException e) {
 			fail("should be able to add software to package");
 		}
 		
 		try {
-			softwarePackage.append("1");
+			softwarePackage.appendSoftware("1");
 			fail("should not be able to add software to package");
 		} catch (SoftwareAlreadyInPackageException e) {}
 	}
@@ -75,19 +75,19 @@ public class SoftwarePackageTest {
 	public void testRemove() {
 		SoftwarePackage softwarePackage = this.craftSampleSoftwarePackage();
 		try {
-			softwarePackage.append("1");
+			softwarePackage.appendSoftware("1");
 		} catch (SoftwareAlreadyInPackageException e) {
 			fail("should be able to add software to package");
 		}
 		
 		try {
-			softwarePackage.remove("1");
+			softwarePackage.removeSoftware("1");
 		} catch (SoftwareNotFoundException e) {
 			fail("should be able to remove software to package");
 		}
 		
 		try {
-			softwarePackage.remove("1");
+			softwarePackage.removeSoftware("1");
 			fail("should not be able to remove software to package");
 		} catch (SoftwareNotFoundException e) {}
 	}

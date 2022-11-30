@@ -1,9 +1,15 @@
 package system.repository;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
+import system.action.Script;
 import system.logging.HTTPRemoteRepositoryLogger;
+import system.packaging.FilePackage;
 import system.packaging.Package;
+import system.packaging.PackageMetadata;
 
 public class HTTPRemoteRepository extends RemoteRepository {
 	private HTTPRemoteRepositoryLogger logger = null;
@@ -14,12 +20,19 @@ public class HTTPRemoteRepository extends RemoteRepository {
 	}
 
 	public List<String> getListOfPackages() {
-		// TODO Auto-generated method stub
-		return null;
+		return new ArrayList<String>();
 	}
 
 	public Package getPackage(String packageName) throws PackageNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		PackageMetadata metadata = new PackageMetadata(packageName, "", "", "");
+		List<String> dependencies = new ArrayList<String>();
+		Script installScript = new Script();
+		Script uninstallScript = new Script();
+		Map<String, String> files = new TreeMap<String, String>();
+		
+		FilePackage filePackage = new FilePackage(
+				metadata, dependencies, installScript,
+				uninstallScript, files);
+		return filePackage;
 	}
 }
