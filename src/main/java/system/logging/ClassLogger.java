@@ -5,7 +5,7 @@ import org.apache.logging.log4j.LogManager;
 public abstract class ClassLogger {
 	private Logger logger = null;
 
-	public ClassLogger(Class<?> theClass) {
+	protected ClassLogger(Class<?> theClass) {
 		this.logger = LogManager.getLogger(theClass);
 	}
 	

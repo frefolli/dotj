@@ -28,7 +28,9 @@ public class RepositoryProxy extends Repository {
 			thePackage = this.localRepository.getPackage(packageName);
 		} catch (PackageNotFoundException error) {
 			thePackage = this.remoteRepository.getPackage(packageName);
-			this.localRepository.addPackage(thePackage);
+			try {
+				this.localRepository.addPackage(thePackage);
+			} catch (PackageAlreadyInRepositoryException e) {}
 		}
 		return thePackage;
 	}

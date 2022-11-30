@@ -14,6 +14,10 @@ public abstract class Package {
 		return this.metadata;
 	}
 	
+	public List<String> getDependencies() {
+		return this.dependencies;
+	}
+	
 	public Script getInstallScript() {
 		return this.installScript;
 	}

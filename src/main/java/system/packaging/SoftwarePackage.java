@@ -26,4 +26,24 @@ public class SoftwarePackage extends Package {
 	public List<String> getListOfSoftwares() {
 		return new ArrayList<String>(this.softwares);
 	}
+	
+	public String get(int index) {
+		return this.softwares.get(index);
+	}
+	
+	public void append(String software) throws SoftwareAlreadyInPackageException {
+		if (this.softwares.contains(software)) {
+			throw new SoftwareAlreadyInPackageException(software);
+		} else {
+			this.softwares.add(software);
+		}
+	}
+	
+	public void remove(String software) throws SoftwareNotFoundException {
+		if (this.softwares.contains(software)) {
+			this.softwares.remove(software);
+		} else {
+			throw new SoftwareNotFoundException(software);
+		}
+	}
 }
