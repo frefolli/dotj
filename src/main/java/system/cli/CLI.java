@@ -9,7 +9,7 @@ import net.sourceforge.argparse4j.inf.Namespace;
 public class CLI {
     public static void main(String[] args) {
         ArgumentParser parser = ArgumentParsers.newFor("dotj").build();
-        parser.addArgument("-f", "--file").nargs("!").help("pull package list from file");
+        parser.addArgument("-f", "--file").nargs("?").help("pull package list from file");
         parser.addArgument("package").nargs("*").help("package to install");
         Namespace ns = null;
 
