@@ -26,10 +26,10 @@ public class ActionTest {
 		Action A = new Action("A");
 		Action B = new Action("B");
 		Action A2 = new Action("A");
-		assertTrue(A.equals(A));
-		assertFalse(A.equals(B));
-		assertTrue(A.equals(A2));
-		assertFalse(A.equals(new Script()));
+		assertEquals(A,A);
+		assertNotEquals(A,B);
+		assertEquals(A,A2);
+		assertNotEquals(A, new Script());
 	}
 
 	@Test

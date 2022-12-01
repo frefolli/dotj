@@ -13,7 +13,7 @@ public class HTTPRemoteRepositoryTest {
 	@Test
 	public void testConstructor() {
 		HTTPRemoteRepository remoteRepository = this.craftSampleHTTPRemoteRepository();
-		assertEquals(remoteRepository.getURL(), "http://boh");
+		assertEquals("http://boh", remoteRepository.getURL());
 	}
 	
 	@Test

@@ -38,11 +38,11 @@ public class SoftwarePackageTest {
 				metadata, dependencies, installScript,
 				uninstallScript, softwares);
 		
-		assertEquals(softwarePackage.getMetadata(), metadata);
-		assertEquals(softwarePackage.getDependencies(), dependencies);
-		assertEquals(softwarePackage.getInstallScript(), installScript);
-		assertEquals(softwarePackage.getUninstallScript(), uninstallScript);
-		assertEquals(softwarePackage.getListOfSoftwares(), softwares);
+		assertEquals(metadata, softwarePackage.getMetadata());
+		assertEquals(dependencies, softwarePackage.getDependencies());
+		assertEquals(installScript, softwarePackage.getInstallScript());
+		assertEquals(uninstallScript, softwarePackage.getUninstallScript());
+		assertEquals(softwares, softwarePackage.getListOfSoftwares());
 	}
 	
 	@Test
@@ -53,6 +53,7 @@ public class SoftwarePackageTest {
 		} catch (SoftwareAlreadyInPackageException e) {
 			fail("should be able to add software to package");
 		}
+		assertEquals(1, softwarePackage.getNumberOfSoftwares());
 		assertEquals("1", softwarePackage.getSoftware(0));
 	}
 	

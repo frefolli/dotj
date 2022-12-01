@@ -12,12 +12,12 @@ public class MachineCollection {
 	private Map<String, Machine> machines = null;
 
 	public MachineCollection() {
-		this.machines = new TreeMap<String, Machine>();
+		this.machines = new TreeMap<>();
 		this.logger = MachineCollectionLogger.getInstance();
 	}
 	
 	public List<String> getListOfMachines() {
-		return new ArrayList<String>(this.machines.keySet());
+		return new ArrayList<>(this.machines.keySet());
 	}
 	
 	public Machine getMachine(String machineName) throws MachineNotFoundException {

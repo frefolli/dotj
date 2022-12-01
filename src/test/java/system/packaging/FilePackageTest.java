@@ -38,11 +38,11 @@ public class FilePackageTest {
 				metadata, dependencies, installScript,
 				uninstallScript, files);
 		
-		assertEquals(filePackage.getMetadata(), metadata);
-		assertEquals(filePackage.getDependencies(), dependencies);
-		assertEquals(filePackage.getInstallScript(), installScript);
-		assertEquals(filePackage.getUninstallScript(), uninstallScript);
-		assertEquals(filePackage.getFiles(), files);
+		assertEquals(metadata, filePackage.getMetadata());
+		assertEquals(dependencies, filePackage.getDependencies());
+		assertEquals(installScript, filePackage.getInstallScript());
+		assertEquals(uninstallScript, filePackage.getUninstallScript());
+		assertEquals(files, filePackage.getFiles());
 	}
 	
 	@Test

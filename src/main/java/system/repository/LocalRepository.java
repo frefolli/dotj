@@ -16,11 +16,11 @@ public class LocalRepository extends Repository {
 	public LocalRepository(String path) {
 		this.path = path;
 		this.logger = LocalRepositoryLogger.getInstance();
-		this.packages = new TreeMap<String, Package>();
+		this.packages = new TreeMap<>();
 	}
 
 	public List<String> getListOfPackages() {
-		return new ArrayList<String>(this.packages.keySet());
+		return new ArrayList<>(this.packages.keySet());
 	}
 
 	public Package getPackage(String packageName) throws PackageNotFoundException {

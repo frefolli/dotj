@@ -2,7 +2,7 @@ package system.machine;
 
 import system.logging.SSHRemoteMachineLogger;
 
-public class SSHRemoteMachine extends Machine {
+public class SSHRemoteMachine extends RemoteMachine {
 	private SSHRemoteMachineLogger logger = null;
 
 	public SSHRemoteMachine() {

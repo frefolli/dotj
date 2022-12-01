@@ -24,7 +24,11 @@ public class SoftwarePackage extends Package {
 	}
 	
 	public List<String> getListOfSoftwares() {
-		return new ArrayList<String>(this.softwares);
+		return new ArrayList<>(this.softwares);
+	}
+	
+	public int getNumberOfSoftwares() {
+		return this.softwares.size();
 	}
 	
 	public String getSoftware(int index) {

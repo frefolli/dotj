@@ -1,5 +1,6 @@
 package system.action;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -12,14 +13,14 @@ public class ScriptTest {
 	@Test
 	public void testEmptyConstructor() {
 		Script script = new Script();
-		assertTrue(script.getNumberOfActions() == 0);
+		assertEquals(0, script.getNumberOfActions());
 	}
 	
 	@Test
 	public void testConstructor() {
 		List<Action> actions = new ArrayList<Action>();
 		Script script = new Script();
-		assertTrue(script.getActions().equals(actions));
+		assertEquals(actions, script.getActions());
 		Action action = new Action("ls");
 		try {
 			script.appendAction(action);
@@ -27,8 +28,8 @@ public class ScriptTest {
 			fail("should be able to add action");
 		}
 		assertTrue(script.getActions().contains(action));
-		assertTrue(script.getNumberOfActions() == 1);
-		assertTrue(script.getAction(0).equals(action));
+		assertEquals(1, script.getNumberOfActions());
+		assertEquals(action, script.getAction(0));
 		try {
 			script.removeAction(action);
 			assertTrue(!(script.getActions().contains(action)));

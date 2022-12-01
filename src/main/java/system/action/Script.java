@@ -8,13 +8,13 @@ public class Script {
 	private List<Action> actions = null;
 	private ScriptLogger logger = null;
 
-	public Script(ArrayList<Action> actions) {
+	public Script(List<Action> actions) {
 		this.actions = actions;
 		this.logger = ScriptLogger.getInstance();
 	}
 
 	public Script() {
-		this(new ArrayList<Action>());
+		this(new ArrayList<>());
 	}
 	
 	public void run() {
@@ -24,7 +24,7 @@ public class Script {
 	}
 	
 	public List<Action> getActions() {
-		return new ArrayList<Action>(this.actions);
+		return new ArrayList<>(this.actions);
 	}
 	
 	public int getNumberOfActions() {

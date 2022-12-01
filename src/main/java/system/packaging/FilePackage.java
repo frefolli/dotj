@@ -25,7 +25,7 @@ public class FilePackage extends Package {
 	}
 
 	public Map<String, String> getFiles() {
-		return new TreeMap<String, String>(this.files);
+		return new TreeMap<>(this.files);
 	}
 	
 	public String getFile(String fileEntry) throws FileNotFoundException {

@@ -24,8 +24,8 @@ public class LocalRepositoryTest {
 	@Test
 	public void testConstructor() {
 		LocalRepository localRepository = this.craftSampleLocalRepository();
-		assertEquals(localRepository.getPath(), "");
-		assertEquals(localRepository.getListOfPackages().size(), 0);
+		assertEquals("", localRepository.getPath());
+		assertEquals(0, localRepository.getListOfPackages().size());
 	}
 	
 	Package craftSamplePackage() {

@@ -20,19 +20,18 @@ public class HTTPRemoteRepository extends RemoteRepository {
 	}
 
 	public List<String> getListOfPackages() {
-		return new ArrayList<String>();
+		return new ArrayList<>();
 	}
 
 	public Package getPackage(String packageName) throws PackageNotFoundException {
 		PackageMetadata metadata = new PackageMetadata(packageName, "", "", "");
-		List<String> dependencies = new ArrayList<String>();
+		List<String> dependencies = new ArrayList<>();
 		Script installScript = new Script();
 		Script uninstallScript = new Script();
-		Map<String, String> files = new TreeMap<String, String>();
+		Map<String, String> files = new TreeMap<>();
 		
-		FilePackage filePackage = new FilePackage(
+		return new FilePackage(
 				metadata, dependencies, installScript,
 				uninstallScript, files);
-		return filePackage;
 	}
 }

@@ -3,7 +3,7 @@ package system.repository;
 public abstract class RemoteRepository extends Repository {
 	protected String url = null;
 
-	public RemoteRepository(String url) {
+	protected RemoteRepository(String url) {
 		this.url = url;
 	}
 

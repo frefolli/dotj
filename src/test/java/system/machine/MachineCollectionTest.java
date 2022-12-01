@@ -14,7 +14,7 @@ public class MachineCollectionTest {
 	@Test
 	public void testConstructor() {
 		MachineCollection machineCollection = this.craftSampleMachineCollection();
-		assertEquals(machineCollection.getListOfMachines().size(), 0);
+		assertEquals(0, machineCollection.getListOfMachines().size());
 	}
 	
 	@Test
