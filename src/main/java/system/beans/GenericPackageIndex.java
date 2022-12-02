@@ -47,7 +47,7 @@ public class GenericPackageIndex {
         this.install = install;
     }
     
-    public void setUninstall(List<String> unistall) {
+    public void setUninstall(List<String> uninstall) {
         this.uninstall = uninstall;
     }
     
