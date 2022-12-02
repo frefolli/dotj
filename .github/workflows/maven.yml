@@ -27,6 +27,7 @@ jobs:
         run: ./launcher.sh test
       - name: Mkdir static
         run: |
+          mkdir ./static
           cp -r ./target/site/jacoco-ut ./static/coverage
           cp -r ./agile/ ./static/agile
       - name: Configure Pages
