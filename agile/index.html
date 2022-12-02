@@ -1,0 +1,149 @@
+<html>
+    <style>
+        h1,h2,h3,h4,p {
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 50px;
+        }
+        
+        h2 {
+            font-size: 40px;
+        }
+        
+        h3 {
+            font-size: 30px;
+        }
+        
+        h4 {
+            font-size: 20px;
+        }
+        
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 80%;
+        }
+    </style>
+    <script>
+        let craftBareDiagram = () => {
+            let diagram = document.createElement("div");
+            diagram.setAttribute("class", "diagram");
+            return diagram;
+        }
+        
+        let craftBareContent = () => {
+            let content = document.createElement("div");
+            content.setAttribute("class", "content");
+            return content;
+        }
+        
+        let craftBareArticle = () => {
+            let article = document.createElement("div");
+            article.setAttribute("class", "article");
+            return article;
+        }
+        
+        let craftBarePage = () => {
+            let page = document.createElement("div");
+            page.setAttribute("class", "page");
+            return page;
+        }
+        
+        let craftClassDiagram = (thePackage) => {
+            let diagram = craftBareDiagram();
+            
+            let h4 = document.createElement("h4");
+            h4.innerText = `package ${thePackage}`;
+            
+            let img = document.createElement("img");
+            img.setAttribute("src", `${thePackage}.png`);
+            img.setAttribute("alt", `package ${thePackage}`);
+            
+            diagram.appendChild(h4);
+            diagram.appendChild(img);
+            return diagram;
+        }
+        
+        let craftClassDiagrams = (title, thePackages) => {
+            let content = craftBareContent();
+            
+            let h3 = document.createElement("h3");
+            h3.innerText = title;
+            content.appendChild(h3);
+            
+            for (let index in thePackages) {
+                let theClassDiagram = craftClassDiagram(thePackages[index]);
+                content.appendChild(theClassDiagram);
+            }
+            
+            return content;
+        }
+        
+        let craftUMLDiagrams = () => {
+            let article = craftBareArticle();
+            
+            let h2 = document.createElement("h2");
+            h2.innerText = "UML Diagrams";
+            article.appendChild(h2);
+            
+            let classDiagrams = [
+                "system.action",
+                "system.beans",
+                "system.cli",
+                "system.distro",
+                "system.json",
+                "system.logging",
+                "system.machine",
+                "system.packaging",
+                "system.repository",
+                "system.terminal",
+                "system.yaml"
+            ];
+            
+            let packageDiagrams = [
+                "system"
+            ];
+            
+            article.appendChild(craftClassDiagrams("Class Diagrams", classDiagrams));
+            article.appendChild(craftClassDiagrams("Package Diagrams", packageDiagrams));
+            
+            return article;
+        }
+        
+        let craftIntroduction = () => {
+            let article = craftBareArticle();
+            
+            let h2 = document.createElement("h2");
+            h2.innerText = "Introduction";
+            article.appendChild(h2);
+            
+            let p = document.createElement("p");
+            p.innerText = "project file is dotj.vpp";
+            article.appendChild(p);
+            
+            return article;
+        }
+        
+        let craftPage = () => {
+            let page = craftBarePage();
+            
+            let h1 = document.createElement("h1");
+            h1.innerText = "Agile of dotj";
+            page.appendChild(h1);
+            
+            page.appendChild(craftIntroduction());
+            page.appendChild(craftUMLDiagrams());
+            
+            return page;
+        }
+        
+        let main = () => {
+            document.body.appendChild(craftPage());
+        }
+    </script>
+    <body onload="main()">
+    </body>
+</html>
