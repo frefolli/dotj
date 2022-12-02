@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class RepositoryProxyTest {
 	public RepositoryProxy craftSampleRepositoryProxy() {
-		LocalRepository localRepository = new LocalRepository("/tmp/dummy");
+		LocalRepository localRepository = new LocalRepository(".");
 		RemoteRepository remoteRepository = new HTTPRemoteRepository("http://localhost:/dummy");
 		RepositoryProxy repositoryProxy = new RepositoryProxy(
 				localRepository, remoteRepository);

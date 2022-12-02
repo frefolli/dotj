@@ -17,14 +17,14 @@ import system.packaging.Package;
 
 public class LocalRepositoryTest {
 	public LocalRepository craftSampleLocalRepository() {
-		LocalRepository localRepository = new LocalRepository("");
+		LocalRepository localRepository = new LocalRepository(".");
 		return localRepository;
 	}
 	
 	@Test
 	public void testConstructor() {
 		LocalRepository localRepository = this.craftSampleLocalRepository();
-		assertEquals("", localRepository.getPath());
+		assertEquals(".", localRepository.getPath());
 		assertEquals(0, localRepository.getListOfPackages().size());
 	}
 	
