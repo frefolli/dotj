@@ -1,39 +1,30 @@
 package system.beans;
 
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class RepositoryIndex {
-	List<String> packageList = null;
+	List<String> packages = null;
+    
+    public RepositoryIndex() {
+        this(new ArrayList<String>());
+    }
 
-	public RepositoryIndex(List<String> packageList) {
-		super();
-		this.packageList = packageList;
+	public RepositoryIndex(List<String> packages) {
+		this.packages = packages;
 	}
 
-	public List<String> getPackageList() {
-		return packageList;
+	public List<String> getPackages() {
+		return packages;
 	}
 
-	public void setPackageList(List<String> packageList) {
-		this.packageList = packageList;
+	public void setPackages(List<String> packages) {
+		this.packages = packages;
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(packageList);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!(obj instanceof RepositoryIndex)) {
-			return false;
-		}
-		RepositoryIndex other = (RepositoryIndex) obj;
-		return Objects.equals(packageList, other.packageList);
-	}
-	
+    @Override
+    public String toString() {
+        return String.format("(repository-index '(%s))", String.join(" ", this.packages));
+    }
 }

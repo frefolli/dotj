@@ -5,6 +5,8 @@ import net.sourceforge.argparse4j.inf.ArgumentParser;
 import net.sourceforge.argparse4j.inf.ArgumentParserException;
 import net.sourceforge.argparse4j.inf.Namespace;
 import system.beans.RepositoryIndex;
+import system.beans.GenericPackageIndex;
+import java.io.File;
 
 public class CLI {
     public static void main(String[] args) {
@@ -18,18 +20,25 @@ public class CLI {
             System.exit(1);
         }
 
-        String filepath = result.getString("filepath");
-        system.yaml.Parser yamlParser = new system.yaml.Parser(RepositoryIndex.class);
-        RepositoryIndex repositoryIndex = (RepositoryIndex) yamlParser.readFromFile(filepath);
-        System.out.println(repositoryIndex.toString());
-    }
+        CLI.readYamlFile(result.getString("package"), GenericPackageIndex.class);
+        CLI.readYamlFile(result.getString("repository"), RepositoryIndex.class);
+   }
+
+    @Deprecated
+    private static void readYamlFile(String filepath, Class<?> theClass) {
+        if (filepath != null) {
+            system.yaml.Parser yamlParser = new system.yaml.Parser(theClass);
+            System.out.println(yamlParser.readFromFile(filepath).toString());
+        }
+     }
     
     private static ArgumentParser buildNewArgumentParser(String softwareName) {
         return ArgumentParsers.newFor(softwareName).build();
     }
     
     private static ArgumentParser addArguments(ArgumentParser argumentParser) {
-    	argumentParser.addArgument("filepath").nargs(1).help("yaml debug");
+    	argumentParser.addArgument("-r", "--repository").help("yaml debug repository");
+    	argumentParser.addArgument("-p", "--package").help("yaml debug package");
     	return argumentParser;
     }
 }

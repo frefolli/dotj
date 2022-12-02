@@ -17,6 +17,7 @@ public class ObjectMapperWrapper {
 		try {
 			return this.objectMapper.readValue(string, theClass);
 		} catch (Exception e) {
+            System.err.println(e.toString());
 			return null;
 		}
 	}
@@ -29,7 +30,8 @@ public class ObjectMapperWrapper {
 		try {
 			return this.objectMapper.readValue(fileObject, theClass);
 		} catch (Exception e) {
-			return null;
+            System.err.println(e.toString());
+            return null;
 		}
 	}
 
