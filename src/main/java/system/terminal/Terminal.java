@@ -1,6 +1,14 @@
 package system.terminal;
 
 public class Terminal {
+	private static Terminal instance = null;
+	
+	public static Terminal getInstance() {
+		if (Terminal.instance == null)
+			Terminal.instance = new Terminal();
+		return Terminal.instance;
+	}
+	
 	public void createFile(String file) {
 		// TODO
 	}
@@ -38,8 +46,12 @@ public class Terminal {
 		return null;
 	}
 	
-	public String deleteTemporaryDirectory() {
+	public String createTemporaryFile() {
 		// TODO
 		return null;
+	}
+	
+	public void runCommand(String command) {
+		// TODO
 	}
 }
