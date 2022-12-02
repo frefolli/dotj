@@ -1,6 +1,6 @@
 package system.beans;
 
-public class PackageMetadataIndex {
+public class PackageMetadataIndex extends Bean {
     private String name = null;
     private String author = null;
     private String version = null;
@@ -41,5 +41,9 @@ public class PackageMetadataIndex {
     public String toString() {
         return String.format("(package-metadata-index :name %s :author %s :version %s :date %s)",
                 this.name, this.author, this.version, this.date);
+    }
+
+    public void validate() throws InvalidBeanException {
+        //
     }
 }

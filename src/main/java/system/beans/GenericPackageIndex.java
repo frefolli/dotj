@@ -3,7 +3,7 @@ package system.beans;
 import java.util.List;
 import java.util.Map;
 
-public class GenericPackageIndex {
+public class GenericPackageIndex extends Bean {
     private PackageMetadataIndex metadata = null;
     private List<String> dependencies = null;
     private List<String> install = null;
@@ -61,9 +61,13 @@ public class GenericPackageIndex {
 
     public String toString() {
         return String.format(
-                "(generic-package-index %s %s %s %s %s %s)",
+                "(generic-package-index :metadata %s :dependencies %s :install %s :uninstall %s :softwares %s :files%s)",
                 this.metadata.toString(), dependencies,
                 this.install, this.uninstall,
                 this.softwares, this.files);
+    }
+
+    public void validate() throws InvalidBeanException {
+        //
     }
 }
