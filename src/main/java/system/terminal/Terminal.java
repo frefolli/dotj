@@ -3,6 +3,10 @@ package system.terminal;
 public class Terminal {
 	private static Terminal instance = null;
 	
+	private Terminal() {
+		// TODO
+	}
+	
 	public static Terminal getInstance() {
 		if (Terminal.instance == null)
 			Terminal.instance = new Terminal();
