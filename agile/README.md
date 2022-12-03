@@ -19,7 +19,9 @@ Si applica il Design Pattern *Facade*: la classe TemporaryFactory contiene una i
 ![package system.terminal](system.terminal.png)
 
 Si applica il Design Pattern *Facade*: la classe Terminal contiene una interfaccia unificata per le operazioni gestite da FileManager, SoftwareManager e DirectoryManager.
+
 Si applica il Design Pattern *Singleton*: le classi Terminal, FileManager, SoftwareManager e DirectoryManager sono progettate per avere un'unica istanza.
+
 Si applica il Design Pattern *Strategy*: le classi concrete APT, DNF e Pacman implementano i servizi promessi dalla classe astratta SoftwareManager.
 
 #### package system
