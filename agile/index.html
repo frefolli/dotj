@@ -89,9 +89,13 @@
             h2.innerText = "UML Diagrams";
             article.appendChild(h2);
             
-            let classDiagrams = [];
+            let classDiagrams = [
+                "system.temp", "system.terminal"
+            ];
             
-            let packageDiagrams = [];
+            let packageDiagrams = [
+                "system"
+            ];
             
             article.appendChild(craftClassDiagrams("Class Diagrams", classDiagrams));
             article.appendChild(craftClassDiagrams("Package Diagrams", packageDiagrams));
