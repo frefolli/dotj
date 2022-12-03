@@ -8,6 +8,14 @@ project file is `dotj.vpp`
 
 ### Class Diagrams
 
+#### package system.beans
+
+![package system.beans](system.beans.png)
+
+#### package system.main
+
+![package system.main](system.main.png)
+
 #### package system.temp
 
 ![package system.temp](system.temp.png)
