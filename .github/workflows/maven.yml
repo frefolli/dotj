@@ -23,13 +23,15 @@ jobs:
           java-version: '11'
           distribution: 'temurin'
           cache: maven
-      - name: Build with Maven
+      - name: Run Coverage with Maven
         run: ./launcher.sh test
-      - name: Mkdir static
+      - name: Run Javadoc with Maven
+        run: ./launcher.sh javadoc
+      - name: Assemble Static Directory
         run: |
-          mkdir ./static
           cp -r ./target/site/jacoco-ut ./static/coverage
           cp -r ./agile/ ./static/agile
+          cp -r ./target/site/apidocs ./static/javadoc
       - name: Configure Pages
         uses: actions/configure-pages@v2
       - name: Zip and Upload Artifact
