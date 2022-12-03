@@ -10,7 +10,12 @@ GOAL_JAVADOC="clean verify javadoc:javadoc"
 # FUNCTIONS
 
 function loadSecrets () {
-    source .secrets
+    if [ -f .secrets ]; then
+        source .secrets
+    else
+        echo -e "missing .secrets file"
+        exit 1
+    fi
 }
 
 function goal_sonar () {
