@@ -8,44 +8,21 @@ project file is `dotj.vpp`
 
 ### Class Diagrams
 
-#### package system.action
+#### package system.temp
 
-![package system.action](action.png)
+![package system.temp](system.temp.png)
 
-#### package system.beans
-![package system.beans](beans.png)
-
-#### package system.cli
-![package system.cli](cli.png)
-
-#### package system.distro
-![package system.distro](distro.png)
-
-#### package system.json
-![package system.json](json.png)
-
-#### package system.logging
-
-![package system.logging](logging.png)
-
-#### package system.machine
-
-![package system.machine](machine.png)
-
-#### package system.packaging
-
-![package system.packaging.png](packaging.png)
-
-#### package system.repository
-
-![package system.repository](repository.png)
+Si applica il Design Pattern *Facade*: la classe TemporaryFactory contiene una interfaccia unificata per le operazioni di creazione di TemporaryFile e TemporaryDirectory.
 
 #### package system.terminal
-![package system.terminal](terminal.png)
 
-#### package system.yaml
-![package system.yaml](yaml.png)
-### Package Diagrams
+![package system.terminal](system.terminal.png)
+
+Si applica il Design Pattern *Facade*: la classe Terminal contiene una interfaccia unificata per le operazioni gestite da FileManager, SoftwareManager e DirectoryManager.
+
+Si applica il Design Pattern *Singleton*: le classi Terminal, FileManager, SoftwareManager e DirectoryManager sono progettate per avere un'unica istanza.
+
+Si applica il Design Pattern *Strategy*: le classi concrete APT, DNF e Pacman implementano i servizi promessi dalla classe astratta SoftwareManager.
 
 #### package system
 

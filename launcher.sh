@@ -3,8 +3,9 @@
 # GOALS
 
 GOAL_TEST="clean verify test"
-GOAL_SONAR="$GOAL_TEST sonar:sonar"
+GOAL_SONAR="clean verify test sonar:sonar"
 GOAL_PACKAGE="clean verify package"
+GOAL_JAVADOC="clean verify javadoc:javadoc"
 
 # FUNCTIONS
 
@@ -27,6 +28,10 @@ function goal_package () {
     mvn $GOAL_PACKAGE
 }
 
+function goal_javadoc () {
+    mvn $GOAL_JAVADOC
+}
+
 function cli () {
     case "$1" in
 
@@ -41,8 +46,12 @@ function cli () {
     'package')
         goal_package
         ;;
+
+    'javadoc')
+        goal_javadoc
+        ;;
     *)
-        echo "Usage: $0 { test | sonar | package }"
+        echo "Usage: $0 { test | sonar | package | javadoc }"
         exit 1
         ;;
     esac
