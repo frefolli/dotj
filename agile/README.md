@@ -8,6 +8,26 @@ project file is `dotj.vpp`
 
 ### Class Diagrams
 
+#### package system.json
+
+![package system.json](system.json.png)
+
+#### package system.yaml
+
+![package system.yaml](system.yaml.png)
+
+#### package system.parser
+
+![package system.parser](system.parser.png)
+
+#### package system.packaging
+
+![package system.packaging](system.packaging.png)
+
+#### package system.repository
+
+![package system.repository](system.repository.png)
+
 #### package system.beans
 
 ![package system.beans](system.beans.png)
