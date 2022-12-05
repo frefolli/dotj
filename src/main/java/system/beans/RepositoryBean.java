@@ -2,7 +2,7 @@ package system.beans;
 
 import java.util.List;
 
-public class RepositoryBean extends Bean {
+public class RepositoryBean implements Bean {
 	private List<String> packages = null;
 	
 	public RepositoryBean() {
@@ -15,11 +15,10 @@ public class RepositoryBean extends Bean {
 	}
 
 	public List<String> getPackages() {
-		// TODO
-		return null;
+		return this.packages;
 	}
 
 	public void setPackages(List<String> packages) {
-		// TODO
+		this.packages = packages;
 	}
 }

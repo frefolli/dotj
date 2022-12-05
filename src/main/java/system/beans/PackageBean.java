@@ -3,7 +3,7 @@ package system.beans;
 import java.util.List;
 import java.util.Map;
 
-public class PackageBean extends Bean {
+public class PackageBean implements Bean {
 	private PackageMetadataBean metadata = null;
 	private List<String> dependencies = null;
 	private List<String> softwares = null;
@@ -23,55 +23,55 @@ public class PackageBean extends Bean {
 
 	public PackageMetadataBean getMetadata() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.metadata;
 	}
 
 	public List<String> getDependencies() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.dependencies;
 	}
 
 	public List<String> getSoftwares() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.softwares;
 	}
 
 	public Map<String, String> getFiles() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.files;
 	}
 
 	public List<String> getInstall() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.install;
 	}
 
 	public List<String> getUninstall() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.uninstall;
 	}
 
 	public void setMetadata(PackageMetadataBean metadata) {
-		// TODO Auto-generated method stub
+		this.metadata = metadata;
 	}
 
 	public void setDependencies(List<String> dependencies) {
-		// TODO Auto-generated method stub
+		this.dependencies = dependencies;
 	}
 
 	public void setSoftwares(List<String> softwares) {
-		// TODO Auto-generated method stub
+		this.softwares = softwares;
 	}
 
 	public void setFiles(Map<String, String> files) {
-		// TODO Auto-generated method stub
+		this.files = files;
 	}
 
 	public void setInstall(List<String> install) {
-		// TODO Auto-generated method stub
+		this.install = install;
 	}
 
 	public void setUninstall(List<String> uninstall) {
-		// TODO Auto-generated method stub
+		this.uninstall = uninstall;
 	}
 }

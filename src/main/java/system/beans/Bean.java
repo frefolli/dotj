@@ -1,5 +1,5 @@
 package system.beans;
 
-public abstract class Bean {
+public interface Bean {
 	public abstract void validate();
 }

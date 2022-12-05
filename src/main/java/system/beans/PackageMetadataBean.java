@@ -1,6 +1,6 @@
 package system.beans;
 
-public class PackageMetadataBean extends Bean {
+public class PackageMetadataBean implements Bean {
 	private String name = null;
 	private String author = null;
 	private String date = null;
@@ -16,39 +16,35 @@ public class PackageMetadataBean extends Bean {
 	}
 
 	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public void setName(String name) {
-		// TODO Auto-generated method stub
+		return this.name;
 	}
 
 	public String getAuthor() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public void setAuthor(String author) {
-		// TODO Auto-generated method stub
+		return this.author;
 	}
 
 	public String getDate() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public void setDate(String date) {
-		// TODO Auto-generated method stub
+		return this.date;
 	}
 
 	public String getVersion() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.version;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
 	}
 
 	public void setVersion(String version) {
-		// TODO Auto-generated method stub
+		this.version = version;
 	}
 
 }

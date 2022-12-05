@@ -2,7 +2,7 @@ package system.beans;
 
 import java.util.Map;
 
-public class SoftwareAliasesBean extends Bean {
+public class SoftwareAliasesBean implements Bean {
 	private Map<String, String> aliases = null;
 	
 	public SoftwareAliasesBean() {
@@ -10,17 +10,15 @@ public class SoftwareAliasesBean extends Bean {
 	}
 	
 	public Map<String, String> getAliases() {
-		// TODO
-		return null;
+		return this.aliases;
 	}
 	
 	public void setAliases(Map<String, String> aliases) {
-		// TODO
+		this.aliases = aliases;
 	}
 
 	@Override
 	public void validate() {
 		// TODO Auto-generated method stub
-		
 	}
 }
