@@ -2,6 +2,7 @@ package system.parser;
 
 import system.json.JsonBeanParser;
 import system.yaml.YamlBeanParser;
+import system.beans.Bean;
 
 public abstract class BeanParser {
 	private YamlBeanParser yamlParser = null;
@@ -12,12 +13,12 @@ public abstract class BeanParser {
 		// TODO
 	}
 	
-	public Object parseFromString(String text) {
+	public Bean parseFromString(String text) {
 		// TODO
 		return null;
 	}
 	
-	public Object parseFromFile(String path) {
+	public Bean parseFromFile(String path) {
 		// TODO
 		return null;
 	}

@@ -15,12 +15,12 @@ public class PackageBeanParser extends BeanParser {
 		// TODO
 	}
 	
-	public Object parseFromString(String text) {
+	public PackageBean parseFromString(String text) {
 		// TODO
 		return null;
 	}
 	
-	public Object parseFromFile(String path) {
+	public PackageBean parseFromFile(String path) {
 		// TODO
 		return null;
 	}

@@ -15,12 +15,12 @@ public class PackageMetadataBeanDumper extends BeanDumper {
 		// TODO
 	}
 	
-	public String dumpToString(Object object) {
+	public String dumpToString(PackageMetadataBean metadata) {
 		// TODO
 		return null;
 	}
 	
-	public void dumpToFile(Object object, String path) {
+	public void dumpToFile(PackageMetadataBean metadata, String path) {
 		// TODO
 	}
 }

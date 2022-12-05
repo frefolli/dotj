@@ -1,5 +1,6 @@
 package system.dumper;
 
+import system.beans.Bean;
 import system.json.JsonBeanDumper;
 import system.yaml.YamlBeanDumper;
 
@@ -12,12 +13,12 @@ public abstract class BeanDumper {
 		// TODO
 	}
 	
-	public String dumpToString(Object object) {
+	public String dumpToString(Bean bean) {
 		// TODO
 		return null;
 	}
 	
-	public void dumpToFile(Object object, String path) {
+	public void dumpToFile(Bean bean, String path) {
 		// TODO
 	}
 }

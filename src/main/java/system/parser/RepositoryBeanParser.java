@@ -15,12 +15,12 @@ public class RepositoryBeanParser extends BeanParser {
 		// TODO
 	}
 	
-	public Object parseFromString(String text) {
+	public RepositoryBean parseFromString(String text) {
 		// TODO
 		return null;
 	}
 	
-	public Object parseFromFile(String path) {
+	public RepositoryBean parseFromFile(String path) {
 		// TODO
 		return null;
 	}

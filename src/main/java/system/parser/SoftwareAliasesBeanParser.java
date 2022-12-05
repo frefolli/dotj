@@ -15,12 +15,12 @@ public class SoftwareAliasesBeanParser extends BeanParser {
 		// TODO
 	}
 	
-	public Object parseFromString(String text) {
+	public SoftwareAliasesBean parseFromString(String text) {
 		// TODO
 		return null;
 	}
 	
-	public Object parseFromFile(String path) {
+	public SoftwareAliasesBean parseFromFile(String path) {
 		// TODO
 		return null;
 	}

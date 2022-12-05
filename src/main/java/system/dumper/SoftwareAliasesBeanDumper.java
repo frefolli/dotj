@@ -15,12 +15,12 @@ public class SoftwareAliasesBeanDumper extends BeanDumper {
 		// TODO
 	}
 	
-	public String dumpToString(Object object) {
+	public String dumpToString(SoftwareAliasesBean softwareAliases) {
 		// TODO
 		return null;
 	}
 	
-	public void dumpToFile(Object object, String path) {
+	public void dumpToFile(SoftwareAliasesBean softwareAliases, String path) {
 		// TODO
 	}
 }

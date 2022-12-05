@@ -15,12 +15,12 @@ public class PackageBeanDumper extends BeanDumper {
 		// TODO
 	}
 	
-	public String dumpToString(Object object) {
+	public String dumpToString(PackageBean package_) {
 		// TODO
 		return null;
 	}
 	
-	public void dumpToFile(Object object, String path) {
+	public void dumpToFile(PackageBean package_, String path) {
 		// TODO
 	}
 }

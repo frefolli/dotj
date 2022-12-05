@@ -15,12 +15,12 @@ public class PackageMetadataBeanParser extends BeanParser {
 		// TODO
 	}
 	
-	public Object parseFromString(String text) {
+	public PackageMetadataBean parseFromString(String text) {
 		// TODO
 		return null;
 	}
 	
-	public Object parseFromFile(String path) {
+	public PackageMetadataBean parseFromFile(String path) {
 		// TODO
 		return null;
 	}
