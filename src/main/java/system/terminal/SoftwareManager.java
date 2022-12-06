@@ -1,22 +1,29 @@
 package system.terminal;
 
-public class SoftwareManager {
+import java.nio.file.Files;
+import java.nio.file.Path;
+
+public abstract class SoftwareManager {
 	private static SoftwareManager instance = null;
 	
 	public static SoftwareManager getInstance() {
-		// TODO
-		return null;
+		if (SoftwareManager.instance == null) {
+			if (Files.exists(Path.of("/usr/bin/pacman"))) {
+				SoftwareManager.instance = new Pacman();
+			} else if (Files.exists(Path.of("/usr/bin/apt"))) {
+				SoftwareManager.instance = new APT();
+			} else if (Files.exists(Path.of("/usr/bin/dnf"))) {
+				SoftwareManager.instance = new DNF();
+			}
+		}
+		return SoftwareManager.instance;
 	}
 	
-	public SoftwareManager() {
+	protected SoftwareManager() {
 		// TODO
 	}
 	
-	public void installSoftware(String software) {
-		// TODO
-	}
+	public abstract void installSoftware(String software);
 	
-	public void uninstallSoftware(String software) {
-		// TODO
-	}
+	public abstract void uninstallSoftware(String software);
 }
