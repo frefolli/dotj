@@ -1,9 +1,9 @@
 package system.parser;
 
-public class CannotParsePackageMetadataBeanFromFileException extends Exception {
+public class CannotParsePackageMetadataBeanFromFileException extends CannotParseBeanFromFileException {
 
 	public CannotParsePackageMetadataBeanFromFileException(String path) {
-		super(String.format("canot parse bean from file %s", path));
+		super(path);
 	}
 
 }

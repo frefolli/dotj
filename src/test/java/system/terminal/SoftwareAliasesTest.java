@@ -28,8 +28,16 @@ public class SoftwareAliasesTest {
 			fail("should be able to create a temporary file");
 		}
 		
-		softwareAliases.save(file.getPath());
-		softwareAliases.load(file.getPath());
+		try {
+			softwareAliases.save(file.getPath());
+		} catch (CannotDumpSoftwareAliasesToFileException e1) {
+			fail("should be able to dump itself");
+		}
+		try {
+			softwareAliases.load(file.getPath());
+		} catch (CannotLoadSoftwareAliasesFromFileException e1) {
+			fail("should be able to load itself");
+		}
 		
 		try {
 			file.clean();

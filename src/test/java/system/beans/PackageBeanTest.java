@@ -1,6 +1,7 @@
 package system.beans;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +35,10 @@ public class PackageBeanTest {
 		assertEquals(install ,packageBean.getInstall());
 		assertEquals(uninstall ,packageBean.getUninstall());
 		
-		packageBean.validate();
+		try {
+			packageBean.validate();
+		} catch (InvalidPackageBeanException e) {
+			fail("should be valid");
+		}
 	}
 }

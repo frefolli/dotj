@@ -1,9 +1,9 @@
 package system.parser;
 
-public class CannotParseRepositoryBeanFromStringException extends Exception {
+public class CannotParseRepositoryBeanFromStringException extends CannotParseBeanFromStringException {
 
 	public CannotParseRepositoryBeanFromStringException(String text) {
-		super(String.format("canot parse bean from string \"%s\"", text));
+		super(text);
 	}
 
 }

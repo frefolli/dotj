@@ -18,7 +18,7 @@ public class SoftwareAliasesBean implements Bean {
 	}
 
 	@Override
-	public void validate() {
+	public void validate() throws InvalidSoftwareAliasesBeanException {
 		// TODO Auto-generated method stub
 	}
 }

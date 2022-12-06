@@ -1,6 +1,7 @@
 package system.beans;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import java.util.Map;
 import java.util.TreeMap;
@@ -14,6 +15,10 @@ public class SoftwareAliasesBeanTest {
 		
 		softwareAliases.setAliases(aliases);
 		assertEquals(aliases, softwareAliases.getAliases());
-		softwareAliases.validate();
+		try {
+			softwareAliases.validate();
+		} catch (InvalidSoftwareAliasesBeanException e) {
+			fail("should be valid");
+		}
 	}
 }

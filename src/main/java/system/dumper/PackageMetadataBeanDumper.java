@@ -6,21 +6,28 @@ public class PackageMetadataBeanDumper extends BeanDumper {
 	private static PackageMetadataBeanDumper instance = null;
 	
 	public static PackageMetadataBeanDumper getInstance() {
-		// TODO
-		return null;
+		if (PackageMetadataBeanDumper.instance == null)
+			PackageMetadataBeanDumper.instance = new PackageMetadataBeanDumper();
+		return PackageMetadataBeanDumper.instance;
 	}
 	
 	private PackageMetadataBeanDumper() {
 		super(PackageMetadataBean.class);
-		// TODO
 	}
 	
-	public String dumpToString(PackageMetadataBean metadata) {
-		// TODO
-		return null;
+	public String dumpToString(PackageMetadataBean metadata) throws CannotDumpPackageMetadataBeanToStringException {
+		try {
+			return super.dumpToString(metadata);
+		} catch (CannotDumpBeanToStringException e) {
+			throw new CannotDumpPackageMetadataBeanToStringException(metadata);
+		}
 	}
 	
-	public void dumpToFile(PackageMetadataBean metadata, String path) {
-		// TODO
+	public void dumpToFile(PackageMetadataBean metadata, String path) throws CannotDumpPackageMetadataBeanToFileException {
+		try {
+			super.dumpToFile(metadata, path);
+		} catch (CannotDumpBeanToFileException e) {
+			throw new CannotDumpPackageMetadataBeanToFileException(metadata, path);
+		}
 	}
 }

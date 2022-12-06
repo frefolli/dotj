@@ -16,7 +16,7 @@ public class PackageBean implements Bean {
 	}
 
 	@Override
-	public void validate() {
+	public void validate() throws InvalidPackageBeanException {
 		// TODO Auto-generated method stub
 
 	}

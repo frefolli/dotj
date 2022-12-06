@@ -1,6 +1,7 @@
 package system.beans;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
@@ -25,7 +26,11 @@ public class PackageMetadataBeanTest {
 		assertEquals(version, packageMetadata.getVersion());
 		assertEquals(date, packageMetadata.getDate());
 		
-		packageMetadata.validate();
+		try {
+			packageMetadata.validate();
+		} catch (InvalidPackageMetadataBeanException e) {
+			fail("should be valid");
+		}
 	}
 
 }

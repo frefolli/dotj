@@ -10,7 +10,7 @@ public class RepositoryBean implements Bean {
 	}
 
 	@Override
-	public void validate() {
+	public void validate() throws InvalidRepositoryBeanException {
 		// TODO Auto-generated method stub
 	}
 

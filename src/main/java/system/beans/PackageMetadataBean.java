@@ -11,7 +11,7 @@ public class PackageMetadataBean implements Bean {
 	}
 
 	@Override
-	public void validate() {
+	public void validate() throws InvalidPackageMetadataBeanException {
 		// TODO Auto-generated method stub
 	}
 
