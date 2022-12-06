@@ -2,9 +2,20 @@ package system.terminal;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 
+/*
+ * This is a Unit of Work, at a certain time commit() is called
+ * So i only need to register actions and override only commit phases
+ * 
+ * This is also a Template Method implementation, commit calls
+ * commitInstall and commitUninstall, which are overridden by subclasses
+ * */
 public abstract class SoftwareManager {
 	private static SoftwareManager instance = null;
+	private List<String> installQueue = null;
+	private List<String> uninstallQueue = null;
 	
 	public static SoftwareManager getInstance() {
 		if (SoftwareManager.instance == null) {
@@ -20,10 +31,23 @@ public abstract class SoftwareManager {
 	}
 	
 	protected SoftwareManager() {
-		// TODO
+		this.installQueue = new ArrayList<String>();
+		this.uninstallQueue = new ArrayList<String>();
 	}
 	
-	public abstract void installSoftware(String software);
+	public void installSoftware(String software) {
+		this.installQueue.add(software);
+	}
 	
-	public abstract void uninstallSoftware(String software);
+	public void uninstallSoftware(String software) {
+		this.uninstallQueue.add(software);
+	}
+	
+	public void commit() {
+		this.commitInstall();
+		this.commitUninstall();
+	}
+	
+	public abstract void commitInstall();
+	public abstract void commitUninstall();
 }

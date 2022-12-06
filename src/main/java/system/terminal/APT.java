@@ -15,12 +15,12 @@ public class APT extends SoftwareManager {
 	}
 
 	@Override
-	public void installSoftware(String software) {
-		// TODO Auto-generated method stub
+	public void commitInstall() {
+		
 	}
 
 	@Override
-	public void uninstallSoftware(String software) {
-		// TODO Auto-generated method stub
+	public void commitUninstall() {
+		
 	}
 }
