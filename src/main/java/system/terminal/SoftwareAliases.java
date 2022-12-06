@@ -1,40 +1,39 @@
 package system.terminal;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class SoftwareAliases {
 	private Map<String, String> aliases = null;
 	
 	public SoftwareAliases() {
-		// TODO
+		this(new TreeMap<String, String>());
 	}
 	
 	public SoftwareAliases(Map<String, String> aliases) {
-		// TODO
+		this.aliases = aliases;
 	}
 	
 	public String getAlias(String software) {
-		// TODO
-		return null;
+		return this.aliases.get(software);
 	}
 	
 	public void addAlias(String software, String alias) {
-		// TODO
+		this.aliases.put(software, alias);
 	}
 	
-	public void removeAliad(String software) {
-		// TODO
+	public void removeAlias(String software) {
+		this.aliases.remove(software);
 	}
 	
 	public List<String> getListOfAliases() {
-		// TODO
-		return null;
+		return new ArrayList<String>(this.aliases.keySet());
 	}
 	
 	public String toString() {
-		// TODO
-		return null;
+		return String.format("(software-aliases '(%s))", String.join(" ", this.getListOfAliases()));
 	}
 	
 	public void load(String configFilePath) {

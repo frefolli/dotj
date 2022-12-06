@@ -7,51 +7,54 @@ public class Terminal {
 	private SoftwareManager softwareManager = null;
 	
 	public static Terminal getInstance() {
-		// TODO
-		return null;
+		if (Terminal.instance == null)
+			Terminal.instance = new Terminal();
+		return Terminal.instance;
 	}
 	
 	public Terminal() {
-		// TODO
+		this.fileManager = FileManager.getInstance();
+		this.directoryManager = DirectoryManager.getInstance();
+		this.softwareManager = SoftwareManager.getInstance();
 	}
 	
-	public void createFile(String file) {
-		// TODO
+	public void createFile(String file) throws CannotCreateFileException {
+		this.fileManager.createFile(file);
 	}
 	
-	public void deleteFile(String file) {
-		// TODO
+	public void deleteFile(String file) throws CannotDeleteFileException {
+		this.fileManager.deleteFile(file);
 	}
 	
-	public void copyFile(String file, String destination) {
-		// TODO
+	public void copyFile(String file, String destination) throws CannotCopyFileException {
+		this.fileManager.copyFile(file, destination);
 	}
 	
-	public void moveFile(String file, String destination) {
-		// TODO
+	public void moveFile(String file, String destination) throws CannotMoveFileException {
+		this.fileManager.moveFile(file, destination);
 	}
 	
-	public void createDirectory(String directory) {
-		// TODO
+	public void createDirectory(String directory) throws CannotCreateDirectoryException {
+		this.directoryManager.createDirectory(directory);
 	}
 	
-	public void deleteDirectory(String directory) {
-		// TODO
+	public void deleteDirectory(String directory) throws CannotDeleteDirectoryException {
+		this.directoryManager.deleteDirectory(directory);
 	}
 	
-	public void copyDirectory(String directory, String destination) {
-		// TODO
+	public void copyDirectory(String directory, String destination) throws CannotCopyDirectoryException {
+		this.directoryManager.copyDirectory(directory, destination);
 	}
 	
-	public void moveDirectory(String directory, String destination) {
-		// TODO
+	public void moveDirectory(String directory, String destination) throws CannotMoveDirectoryException {
+		this.directoryManager.moveDirectory(directory, destination);
 	}
 	
 	public void installSoftware(String software) {
-		// TODO
+		this.softwareManager.installSoftware(software);
 	}
 	
 	public void uninstallSoftware(String software) {
-		// TODO
+		this.softwareManager.uninstallSoftware(software);
 	}
 }

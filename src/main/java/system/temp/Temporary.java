@@ -4,13 +4,12 @@ public abstract class Temporary {
 	protected String path = null;
 	
 	protected Temporary(String path) {
-		// TODO
+		this.path = path;
 	}
 	
 	public String getPath() {
-		// TODO
-		return null;
+		return this.path;
 	}
 	
-	public abstract void clean();
+	public abstract void clean() throws CannotCleanTemporaryException;
 }

@@ -1,30 +1,51 @@
 package system.terminal;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
 public class DirectoryManager {
 	private static DirectoryManager instance = null;
 	
 	public static DirectoryManager getInstance() {
-		// TODO
-		return null;
+		if (DirectoryManager.instance == null)
+			DirectoryManager.instance = new DirectoryManager();
+		return DirectoryManager.instance;
 	}
 	
 	public DirectoryManager() {
 		// TODO
 	}
 	
-	public void createDirectory(String directory) {
-		// TODO
+	public void createDirectory(String directory) throws CannotCreateDirectoryException {
+		try {
+			Files.createDirectory(Path.of(directory));
+		} catch(IOException e) {
+			throw new CannotCreateDirectoryException(directory);
+		}
 	}
 	
-	public void deleteDirectory(String directory) {
-		// TODO
+	public void deleteDirectory(String directory) throws CannotDeleteDirectoryException {
+		try {
+			Files.delete(Path.of(directory));
+		} catch(IOException e) {
+			throw new CannotDeleteDirectoryException(directory);
+		}
 	}
 	
-	public void copyDirectory(String directory, String destination) {
-		// TODO
+	public void copyDirectory(String directory, String destination) throws CannotCopyDirectoryException {
+		try {
+			Files.copy(Path.of(directory), Path.of(destination));
+		} catch(IOException e) {
+			throw new CannotCopyDirectoryException(directory, destination);
+		}
 	}
 	
-	public void moveDirectory(String directory, String destination) {
-		// TODO
+	public void moveDirectory(String directory, String destination) throws CannotMoveDirectoryException {
+		try {
+			Files.move(Path.of(directory), Path.of(destination));
+		} catch(IOException e) {
+			throw new CannotMoveDirectoryException(directory, destination);
+		}
 	}
 }
