@@ -10,7 +10,7 @@ import java.util.Set;
 
 public class TemporaryFactory {
 	private static FileAttribute<Set<PosixFilePermission>> craftFileAttribute() {
-		return PosixFilePermissions.asFileAttribute(PosixFilePermissions.fromString("-rwx------"));
+		return PosixFilePermissions.asFileAttribute(PosixFilePermissions.fromString("rwx------"));
 	}
 	
 	public static TemporaryFile newFile() throws CannotCreateTemporaryFileException {
