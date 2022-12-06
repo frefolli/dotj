@@ -1,6 +1,7 @@
 package system.beans;
 
 import java.util.List;
+import java.util.Objects;
 
 public class RepositoryBean implements Bean {
 	private List<String> packages = null;
@@ -20,5 +21,22 @@ public class RepositoryBean implements Bean {
 
 	public void setPackages(List<String> packages) {
 		this.packages = packages;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(packages);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!(obj instanceof RepositoryBean)) {
+			return false;
+		}
+		RepositoryBean other = (RepositoryBean) obj;
+		return Objects.equals(packages, other.packages);
 	}
 }

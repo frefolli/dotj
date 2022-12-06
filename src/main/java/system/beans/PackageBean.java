@@ -2,6 +2,7 @@ package system.beans;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class PackageBean implements Bean {
 	private PackageMetadataBean metadata = null;
@@ -73,5 +74,24 @@ public class PackageBean implements Bean {
 
 	public void setUninstall(List<String> uninstall) {
 		this.uninstall = uninstall;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(dependencies, files, install, metadata, softwares, uninstall);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!(obj instanceof PackageBean)) {
+			return false;
+		}
+		PackageBean other = (PackageBean) obj;
+		return Objects.equals(dependencies, other.dependencies) && Objects.equals(files, other.files)
+				&& Objects.equals(install, other.install) && Objects.equals(metadata, other.metadata)
+				&& Objects.equals(softwares, other.softwares) && Objects.equals(uninstall, other.uninstall);
 	}
 }

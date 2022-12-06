@@ -1,5 +1,8 @@
 package system.beans;
 
+import java.util.List;
+import java.util.Objects;
+
 public class PackageMetadataBean implements Bean {
 	private String name = null;
 	private String author = null;
@@ -47,4 +50,21 @@ public class PackageMetadataBean implements Bean {
 		this.version = version;
 	}
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(author, date, name, version);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!(obj instanceof PackageMetadataBean)) {
+			return false;
+		}
+		PackageMetadataBean other = (PackageMetadataBean) obj;
+		return Objects.equals(author, other.author) && Objects.equals(date, other.date)
+				&& Objects.equals(name, other.name) && Objects.equals(version, other.version);
+	}
 }

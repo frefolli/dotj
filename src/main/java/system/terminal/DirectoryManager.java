@@ -1,8 +1,11 @@
 package system.terminal;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+
+import org.apache.commons.io.FileUtils;
 
 public class DirectoryManager {
 	private static DirectoryManager instance = null;
@@ -25,9 +28,12 @@ public class DirectoryManager {
 		}
 	}
 	
+	/*
+	 * this function deletes directory and all its content
+	 * */
 	public void deleteDirectory(String directory) throws CannotDeleteDirectoryException {
 		try {
-			Files.delete(Path.of(directory));
+			FileUtils.deleteDirectory(new File(Path.of(directory).toString()));
 		} catch(IOException e) {
 			throw new CannotDeleteDirectoryException(directory);
 		}
