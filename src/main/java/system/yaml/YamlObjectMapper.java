@@ -25,19 +25,19 @@ public class YamlObjectMapper {
 		this.objectMapper.findAndRegisterModules();
 	}
 
-	public Bean parseFromString(String text, Class<?> beanClass) throws CannotParseYamlStringException {
+	public Bean parseFromString(String text, Class<?> beanClass) throws CannotParseYamlFromStringException {
 		try {
 			return Bean.class.cast(this.objectMapper.readValue(text, beanClass));
 		} catch (Exception e) {
-			throw new CannotParseYamlStringException(text);
+			throw new CannotParseYamlFromStringException(text);
 		}
 	}
 
-	public Bean parseFromFile(String path, Class<?> beanClass) throws CannotParseYamlFileException {
+	public Bean parseFromFile(String path, Class<?> beanClass) throws CannotParseYamlFromFileException {
 		try {
 			return Bean.class.cast(this.objectMapper.readValue(new File(path), beanClass));
 		} catch (Exception e) {
-			throw new CannotParseYamlFileException(path);
+			throw new CannotParseYamlFromFileException(path);
 		}
 	}
 	

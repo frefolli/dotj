@@ -16,11 +16,11 @@ public class YamlBeanParser {
 		this.yamlObjectMapper = new YamlObjectMapper();
 	}
 
-	public Bean parseFromString(String text, Class<?> beanClass) throws CannotParseYamlStringException {
+	public Bean parseFromString(String text, Class<?> beanClass) throws CannotParseYamlFromStringException {
 		return this.yamlObjectMapper.parseFromString(text, beanClass);
 	}
 
-	public Bean parseFromFile(String text, Class<?> beanClass) throws CannotParseYamlFileException {
+	public Bean parseFromFile(String text, Class<?> beanClass) throws CannotParseYamlFromFileException {
 		return this.yamlObjectMapper.parseFromFile(text, beanClass);
 	}
 }
