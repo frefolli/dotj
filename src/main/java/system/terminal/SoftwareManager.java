@@ -5,7 +5,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
+/**
  * This is a Unit of Work, at a certain time commit() is called
  * So i only need to register actions and override only commit phases
  * 
@@ -14,12 +14,14 @@ import java.util.List;
  * */
 public abstract class SoftwareManager {
 	private static SoftwareManager instance = null;
-	private List<String> installQueue = null;
-	private List<String> uninstallQueue = null;
+	protected List<String> installQueue = null;
+	protected List<String> uninstallQueue = null;
 	
 	public static SoftwareManager getInstance() {
 		if (SoftwareManager.instance == null) {
-			if (Files.exists(Path.of("/usr/bin/pacman"))) {
+			if (Files.exists(Path.of("/usr/bin/yay"))) {
+				SoftwareManager.instance = new Yay();
+			} else if (Files.exists(Path.of("/usr/bin/pacman"))) {
 				SoftwareManager.instance = new Pacman();
 			} else if (Files.exists(Path.of("/usr/bin/apt"))) {
 				SoftwareManager.instance = new APT();

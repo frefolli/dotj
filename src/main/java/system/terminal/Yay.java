@@ -4,17 +4,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pacman extends SoftwareManager {
-	private static Pacman instance = null;
+public class Yay extends SoftwareManager {
+	private static Yay instance = null;
 	private SoftwareAliases softwareAliases = null;
 	
-	public static Pacman getInstance() {
-		if (Pacman.instance == null)
-			Pacman.instance = new Pacman();
-		return Pacman.instance;
+	public static Yay getInstance() {
+		if (Yay.instance == null)
+			Yay.instance = new Yay();
+		return Yay.instance;
 	}
 	
-	protected Pacman() {
+	protected Yay() {
 		this.softwareAliases = new SoftwareAliases();
 	}
 
@@ -25,7 +25,7 @@ public class Pacman extends SoftwareManager {
 			translatedList.add(this.softwareAliases.getAlias(software));
 		}
 		try {
-			Runtime.getRuntime().exec(String.format("sudo pacman -Syu %s", String.join(" ", translatedList)));
+			Runtime.getRuntime().exec(String.format("yay -Syu %s", String.join(" ", translatedList)));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -39,7 +39,7 @@ public class Pacman extends SoftwareManager {
 			translatedList.add(this.softwareAliases.getAlias(software));
 		}
 		try {
-			Runtime.getRuntime().exec(String.format("sudo pacman -R %s", String.join(" ", translatedList)));
+			Runtime.getRuntime().exec(String.format("yay -R %s", String.join(" ", translatedList)));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

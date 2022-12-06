@@ -23,8 +23,14 @@ public class SoftwareAliases {
 		this.aliases = aliases;
 	}
 	
+	/**
+	 * if a software is not found is intended to be self-mapping
+	 * */
 	public String getAlias(String software) {
-		return this.aliases.get(software);
+		if (this.aliases.containsKey(software))
+			return this.aliases.get(software);
+		else
+			return software;
 	}
 	
 	public void addAlias(String software, String alias) {
