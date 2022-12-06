@@ -7,20 +7,20 @@ public class YamlBeanDumper {
 	private YamlObjectMapper yamlObjectMapper = null;
 	
 	public static YamlBeanDumper getInstance() {
-		// TODO
-		return null;
+		if (YamlBeanDumper.instance == null)
+			YamlBeanDumper.instance = new YamlBeanDumper();
+		return YamlBeanDumper.instance;
 	}
 	
 	public YamlBeanDumper() {
-		// TODO
+		this.yamlObjectMapper = YamlObjectMapper.getInstance();
 	}
 	
-	public String dumpToString(Bean bean) {
-		// TODO
-		return null;
+	public String dumpToString(Bean bean) throws CannotDumpToYamlStringException {
+		return this.yamlObjectMapper.dumpToString(bean);
 	}
 	
-	public void dumpToFile(Bean bean, String path) {
-		// TODO
+	public void dumpToFile(Bean bean, String path) throws CannotDumpToYamlFileException {
+		this.yamlObjectMapper.dumpToFile(bean, path);
 	}
 }

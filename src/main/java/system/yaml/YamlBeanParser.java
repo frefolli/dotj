@@ -7,21 +7,20 @@ public class YamlBeanParser {
 	private YamlObjectMapper yamlObjectMapper = null;
 	
 	public static YamlBeanParser getInstance() {
-		// TODO
-		return null;
+		if (YamlBeanParser.instance == null)
+			YamlBeanParser.instance = new YamlBeanParser();
+		return YamlBeanParser.instance;
 	}
 	
 	public YamlBeanParser() {
-		// TODO
+		this.yamlObjectMapper = new YamlObjectMapper();
 	}
 
-	public Bean parseFromString(String text, Class<?> beanClass) {
-		// TODO
-		return null;
+	public Bean parseFromString(String text, Class<?> beanClass) throws CannotParseYamlStringException {
+		return this.yamlObjectMapper.parseFromString(text, beanClass);
 	}
 
-	public Bean parseFromFile(String text, Class<?> beanClass) {
-		// TODO
-		return null;
+	public Bean parseFromFile(String text, Class<?> beanClass) throws CannotParseYamlFileException {
+		return this.yamlObjectMapper.parseFromFile(text, beanClass);
 	}
 }
