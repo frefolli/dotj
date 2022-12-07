@@ -24,7 +24,7 @@ public class PackageTest {
 		List<String> uninstall = new ArrayList<String>();
 		Package package_ = new Package(metadata, dependencies, softwares, files, install, uninstall);
 		
-		assertEquals(metadata, package_.equals(package_));
+		assertEquals(metadata, package_.getMetadata());
 		assertEquals(dependencies, package_.getDependencies());
 		assertEquals(softwares, package_.getSoftwares());
 		assertEquals(files, package_.getFiles());
