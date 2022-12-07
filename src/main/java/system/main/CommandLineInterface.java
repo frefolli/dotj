@@ -34,13 +34,13 @@ public class CommandLineInterface {
 			if (remove != null)
 				jobQueue.addJob(new UninstallPackagesJob(remove));
 			
-			String search = result.getString("search");
+			List<String> search = result.getList("search");
 			if (search != null)
-				jobQueue.addJob(new SearchPackageJob(search));
+				jobQueue.addJob(new SearchPackageJob(search.get(0)));
 
-			String localSearch = result.getString("localSearch");
+			List<String> localSearch = result.getList("localSearch");
 			if (localSearch != null)
-				jobQueue.addJob(new LocalSearchPackageJob(localSearch));
+				jobQueue.addJob(new LocalSearchPackageJob(localSearch.get(0)));
 		} catch (ArgumentParserException e) {
 			e.printStackTrace();
 			System.exit(1);
