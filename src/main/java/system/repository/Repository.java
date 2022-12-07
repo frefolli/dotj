@@ -10,8 +10,19 @@ import system.temp.TemporaryFactory;
 /* This class acts like a Proxy
  * */
 public class Repository {
-	LocalRepository localRepository = null;
-	RemoteRepository remoteRepository = null;
+	private static Repository instance = null;
+	private LocalRepository localRepository = null;
+	private RemoteRepository remoteRepository = null;
+	
+	public static Repository getInstance() throws CannotOpenLocalRepository {
+		if (Repository.instance == null) {
+			Repository.instance = new Repository(
+					new LocalRepository("/tmp/"),
+					RemoteRepositoryFactory.newHTTP(
+							"https://raw.githubusercontent.com/frefolli/dotfiles/master/repository"));
+		}
+		return Repository.instance;
+	}
 	
 	public Repository(LocalRepository localRepository, RemoteRepository remoteRepository) {
 		this.localRepository = localRepository;

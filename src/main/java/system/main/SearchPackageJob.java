@@ -20,9 +20,7 @@ public class SearchPackageJob extends Job {
 	public void run() {
 		Repository repository;
 		try {
-			repository = new Repository(
-					new LocalRepository("/tmp/"),
-					RemoteRepositoryFactory.newHTTP("https://raw.githubusercontent.com/frefolli/dotfiles/master/repository"));
+			repository = Repository.getInstance();
 			List<Package> packages = repository.searchPackages(name);
 			for (Package package_ : packages) {
 				System.out.println(package_.toString());
