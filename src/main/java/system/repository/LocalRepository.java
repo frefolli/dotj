@@ -108,9 +108,11 @@ public class LocalRepository {
 	private void load(String indexFilePath) throws CannotSetupLocalRepositoryIndexFileException {
 		try {
 			RepositoryBean bean = RepositoryBeanParser.getInstance().parseFromFile(indexFilePath);
+			this.packages = new ArrayList<String>(bean.getPackages());
 		} catch (CannotParseRepositoryBeanFromFileException e) {
 			RepositoryBean bean = new RepositoryBean();
 			bean.setPackages(new ArrayList<String>());
+			this.packages = new ArrayList<String>(bean.getPackages());
 			try {
 				RepositoryBeanDumper.getInstance().dumpToFile(bean, indexFilePath);
 			} catch (CannotDumpRepositoryBeanToFileException e1) {

@@ -41,10 +41,7 @@ public class CommandLineInterface {
 			List<String> localSearch = result.getList("localSearch");
 			if (localSearch != null)
 				jobQueue.addJob(new LocalSearchPackageJob(localSearch.get(0)));
-		} catch (ArgumentParserException e) {
-			e.printStackTrace();
-			System.exit(1);
-		}
+		} catch (ArgumentParserException e) {}
 		return jobQueue;
 	}
 }
