@@ -7,27 +7,25 @@ public class PackageMetadata {
 	private String version = null;
 
 	public PackageMetadata(String name, String author, String date, String version) {
-		// TODO
+		this.name = name;
+		this.author = author;
+		this.date = date;
+		this.version = version;
 	}
-
+	
 	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
+		return name;
 	}
-
+	
 	public String getAuthor() {
-		// TODO Auto-generated method stub
-		return null;
+		return author;
 	}
-
+	
 	public String getDate() {
-		// TODO Auto-generated method stub
-		return null;
+		return date;
 	}
-
+	
 	public String getVersion() {
-		// TODO Auto-generated method stub
-		return null;
+		return version;
 	}
-
 }

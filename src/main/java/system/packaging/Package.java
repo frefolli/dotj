@@ -10,39 +10,38 @@ public class Package {
 	private Map<String, String> files = null;
 	private List<String> install = null;
 	private List<String> uninstall = null;
-
+	
 	public Package(PackageMetadata metadata, List<String> dependencies, List<String> softwares,
 			Map<String, String> files, List<String> install, List<String> uninstall) {
-		// TODO
+		this.metadata = metadata;
+		this.dependencies = dependencies;
+		this.softwares = softwares;
+		this.files = files;
+		this.install = install;
+		this.uninstall = uninstall;
 	}
-
+	
 	public PackageMetadata getMetadata() {
-		// TODO Auto-generated method stub
-		return null;
+		return metadata;
 	}
-
+	
 	public List<String> getDependencies() {
-		// TODO Auto-generated method stub
-		return null;
+		return dependencies;
 	}
-
+	
 	public List<String> getSoftwares() {
-		// TODO Auto-generated method stub
-		return null;
+		return softwares;
 	}
-
+	
 	public Map<String, String> getFiles() {
-		// TODO Auto-generated method stub
-		return null;
+		return files;
 	}
-
+	
 	public List<String> getInstall() {
-		// TODO Auto-generated method stub
-		return null;
+		return install;
 	}
-
+	
 	public List<String> getUninstall() {
-		// TODO Auto-generated method stub
-		return null;
+		return uninstall;
 	}
 }

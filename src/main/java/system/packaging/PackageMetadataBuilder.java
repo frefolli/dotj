@@ -6,28 +6,26 @@ public class PackageMetadataBuilder {
 	private String date = null;
 	private String version = null;
 	
-	public PackageMetadataBuilder() {
-		// TODO Auto-generated constructor stub
-	}
-
+	public PackageMetadataBuilder() {}
+	
 	public void setName(String name) {
-		// TODO Auto-generated method stub
+		this.name = name;
 	}
 
 	public void setAuthor(String author) {
-		// TODO Auto-generated method stub
+		this.author = author;
 	}
 
 	public void setDate(String date) {
-		// TODO Auto-generated method stub
+		this.date = date;
 	}
 
 	public void setVersion(String version) {
-		// TODO Auto-generated method stub
+		this.version = version;
 	}
 
 	public PackageMetadata build() {
-		// TODO
-		return null;
+		return new PackageMetadata(name, author, date, version);
 	}
+
 }

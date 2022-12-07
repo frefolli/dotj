@@ -11,36 +11,33 @@ public class PackageBuilder {
 	private List<String> install = null;
 	private List<String> uninstall = null;
 	
-	public PackageBuilder() {
-		// TODO Auto-generated constructor stub
-	}
-
+	public PackageBuilder() {}
+	
 	public void setMetadata(PackageMetadata metadata) {
-		// TODO Auto-generated method stub
+		this.metadata = metadata;
 	}
 
 	public void setDependencies(List<String> dependencies) {
-		// TODO Auto-generated method stub
+		this.dependencies = dependencies;
 	}
 
 	public void setSoftwares(List<String> softwares) {
-		// TODO Auto-generated method stub
+		this.softwares = softwares;
 	}
 
 	public void setFiles(Map<String, String> files) {
-		// TODO Auto-generated method stub
+		this.files = files;
 	}
 
 	public void setInstall(List<String> install) {
-		// TODO Auto-generated method stub
+		this.install = install;
 	}
 
 	public void setUninstall(List<String> uninstall) {
-		// TODO Auto-generated method stub
+		this.uninstall = uninstall;
 	}
 	
 	public Package build() {
-		// TODO
-		return null;
+		return new Package(metadata, dependencies, softwares, files, install, uninstall);
 	}
 }
