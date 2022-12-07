@@ -76,6 +76,7 @@ public class LocalRepository {
 		String packageName = freshPackage.getMetadata().getName();
 		
 		try {
+			System.out.println(String.format("copying directory %s to %s", tmpPath, this.craftPackagePath(packageName)));
 			Terminal.getInstance().copyDirectory(tmpPath, this.craftPackagePath(packageName));
 		} catch (CannotCopyDirectoryException e) {
 			throw new CannotCopyPackageException();
