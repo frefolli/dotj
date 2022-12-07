@@ -18,7 +18,7 @@ public class Repository {
 		this.remoteRepository = remoteRepository;
 	}
 	
-	public List<Package> searchPackages(String name) {
+	public List<Package> searchPackages(String name) throws CannotSearchPackagesException {
 		return this.remoteRepository.searchPackages(name);
 	}
 	
@@ -37,13 +37,19 @@ public class Repository {
 			} catch (CannotCreateTemporaryDirectoryException e1) {
 				return null;
 			}
-			package_ = this.remoteRepository.downloadPackage(name, env.getPath());
+			
+			try {
+				package_ = this.remoteRepository.downloadPackage(name, env.getPath());
+			} catch (CannotDownloadPackageException e2) {
+				throw new CannotFindPackageException(name);
+			}
+			
 			try {
 				this.localRepository.addPackage(package_, String.format("%s/%s", env.getPath(), name));
 			} catch (CannotCopyPackageException e1) {
-				return null;
+				// TODO
 			} catch (CannotAddPackageToLocalRepositoryIndexFileException e1) {
-				return null;
+				// TODO
 			}
 			
 			try {

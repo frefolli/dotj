@@ -29,18 +29,25 @@ public class HTTPRepository extends RemoteRepository {
 	}
 
 	@Override
-	public List<Package> searchPackages(String name) {
-			RepositoryBean bean = this.downloadRepositoryIndex();
-			List<Package> packages = new ArrayList<Package>();
-			for (String packageName : bean.getPackages()) {
-				if (packageName.contains(name)) {
-					packages.add(this.downloadPackageIndex(packageName));
+	public List<Package> searchPackages(String name) throws CannotSearchPackagesException {
+			RepositoryBean bean;
+			try {
+				bean = this.downloadRepositoryIndex();
+				List<Package> packages = new ArrayList<Package>();
+				for (String packageName : bean.getPackages()) {
+					if (packageName.contains(name)) {
+						packages.add(this.downloadPackageIndex(packageName));
+					}
 				}
+				return packages;
+			} catch (CannotDownloadRepositoryIndexException e) {
+				throw new CannotSearchPackagesException(this.getURL(), name);
+			} catch (CannotDownloadPackageIndexException e) {
+				throw new CannotSearchPackagesException(this.getURL(), name);
 			}
-			return packages;
 	}
 	
-	private RepositoryBean downloadRepositoryIndex() {
+	private RepositoryBean downloadRepositoryIndex() throws CannotDownloadRepositoryIndexException {
 		try {
 			TemporaryDirectory env = TemporaryFactory.newDirectory();
 			URL remoteIndex = new URL(String.format("%s/index.yml", url));
@@ -50,19 +57,19 @@ public class HTTPRepository extends RemoteRepository {
 			env.clean();
 			return bean;
 		} catch (MalformedURLException e) {
-			return null;
+			throw new CannotDownloadRepositoryIndexException(this.getURL());
 		} catch (IOException e) {
-			return null;
+			throw new CannotDownloadRepositoryIndexException(this.getURL());
 		} catch (CannotParseRepositoryBeanFromFileException e) {
-			return null;
+			throw new CannotDownloadRepositoryIndexException(this.getURL());
 		} catch (CannotCreateTemporaryDirectoryException e) {
-			return null;
+			throw new CannotDownloadRepositoryIndexException(this.getURL());
 		} catch (CannotCleanTemporaryDirectoryException e) {
-			return null;
+			throw new CannotDownloadRepositoryIndexException(this.getURL());
 		}
 	}
 	
-	private Package downloadPackageIndex(String name) {
+	private Package downloadPackageIndex(String name) throws CannotDownloadPackageIndexException {
 		TemporaryDirectory env;
 		try {
 			env = TemporaryFactory.newDirectory();
@@ -73,20 +80,20 @@ public class HTTPRepository extends RemoteRepository {
 			env.clean();
 			return bean.build();
 		} catch (CannotCreateTemporaryDirectoryException e) {
-			return null;
+			throw new CannotDownloadPackageIndexException(this.getURL(), name);
 		} catch (MalformedURLException e) {
-			return null;
+			throw new CannotDownloadPackageIndexException(this.getURL(), name);
 		} catch (IOException e) {
-			return null;
+			throw new CannotDownloadPackageIndexException(this.getURL(), name);
 		} catch (CannotParsePackageBeanFromFileException e) {
-			return null;
+			throw new CannotDownloadPackageIndexException(this.getURL(), name);
 		} catch (CannotCleanTemporaryDirectoryException e) {
-			return null;
+			throw new CannotDownloadPackageIndexException(this.getURL(), name);
 		}
 	}
 
 	@Override
-	public Package downloadPackage(String name, String downloadDirectory) {
+	public Package downloadPackage(String name, String downloadDirectory) throws CannotDownloadPackageException {
 		TemporaryDirectory env;
 		try {
 			URL remoteIndex = new URL(String.format("%s/%s/index.yml", url, name));
@@ -101,13 +108,13 @@ public class HTTPRepository extends RemoteRepository {
 			}
 			return bean.build();
 		} catch (MalformedURLException e) {
-			return null;
+			throw new CannotDownloadPackageException(this.getURL(), name);
 		} catch (IOException e) {
-			return null;
+			throw new CannotDownloadPackageException(this.getURL(), name);
 		} catch (CannotParsePackageBeanFromFileException e) {
-			return null;
+			throw new CannotDownloadPackageException(this.getURL(), name);
 		} catch (CannotCreateDirectoryException e) {
-			return null;
+			throw new CannotDownloadPackageException(this.getURL(), name);
 		}
 	}
 }

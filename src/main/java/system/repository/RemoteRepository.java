@@ -15,6 +15,6 @@ public abstract class RemoteRepository {
 		return this.url;
 	}
 	
-	public abstract List<Package> searchPackages(String name);
-	public abstract Package downloadPackage(String name, String downloadDirectory);
+	public abstract List<Package> searchPackages(String name) throws CannotSearchPackagesException;
+	public abstract Package downloadPackage(String name, String downloadDirectory) throws CannotDownloadPackageException;
 }
