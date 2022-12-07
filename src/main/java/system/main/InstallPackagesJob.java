@@ -6,7 +6,7 @@ public class InstallPackagesJob extends Job {
 	private List<String> packages = null;
 	
 	public InstallPackagesJob(List<String> packages) {
-		// TODO
+		this.packages = packages;
 	}
 
 	@Override

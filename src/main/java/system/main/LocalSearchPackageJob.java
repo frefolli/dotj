@@ -9,10 +9,10 @@ import system.repository.LocalRepository;
 import system.repository.RemoteRepositoryFactory;
 import system.repository.Repository;
 
-public class SearchPackageJob extends Job {
+public class LocalSearchPackageJob extends Job {
 	private String name = null;
 	
-	public SearchPackageJob(String name) {
+	public LocalSearchPackageJob(String name) {
 		this.name = name;
 	}
 
@@ -23,14 +23,11 @@ public class SearchPackageJob extends Job {
 			repository = new Repository(
 					new LocalRepository("/tmp/"),
 					RemoteRepositoryFactory.newHTTP("https://raw.githubusercontent.com/frefolli/dotfiles/master/repository"));
-			List<Package> packages = repository.searchPackages(name);
+			List<Package> packages = repository.searchPackagesLocally(name);
 			for (Package package_ : packages) {
 				System.out.println(package_.toString());
 			}
 		} catch (CannotOpenLocalRepository e) {
-			e.printStackTrace();
-			System.exit(1);
-		} catch (CannotSearchPackagesException e) {
 			e.printStackTrace();
 			System.exit(1);
 		}

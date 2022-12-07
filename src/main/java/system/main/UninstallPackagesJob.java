@@ -6,7 +6,7 @@ public class UninstallPackagesJob extends Job {
 	private List<String> packages = null;
 	
 	public UninstallPackagesJob(List<String> packages) {
-		// TODO
+		this.packages = packages;
 	}
 
 	@Override
