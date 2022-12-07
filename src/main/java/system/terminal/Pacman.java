@@ -10,6 +10,6 @@ public class Pacman extends SoftwareManager {
 	}
 	
 	protected Pacman() {
-		super(new SoftwareAliases(), "pacman", "-Syu", "-R", true);
+		super(new SoftwareAliases(), "pacman", "-Syu --needed --noconfirm", "-R", true);
 	}
 }

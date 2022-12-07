@@ -1,6 +1,8 @@
 package system.terminal;
 
 import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -87,8 +89,12 @@ public abstract class SoftwareManager {
 		}
 		try {
 			String command = this.craftInstallCommand(translatedList);
-			Runtime.getRuntime().exec(command);
-		} catch (IOException e) {
+			Process proc = Runtime.getRuntime().exec(command);
+            BufferedReader br = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+            String line=null;
+            while ((line = br.readLine()) != null)
+                System.out.println(this.executable + " > " + line);
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -101,8 +107,8 @@ public abstract class SoftwareManager {
 		}
 		try {
 			String command = this.craftUninstallCommand(translatedList);
-			Runtime.getRuntime().exec(command);
-		} catch (IOException e) {
+			Runtime.getRuntime().exec(command).waitFor();
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

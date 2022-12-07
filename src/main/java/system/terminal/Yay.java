@@ -10,6 +10,6 @@ public class Yay extends SoftwareManager {
 	}
 	
 	protected Yay() {
-		super(new SoftwareAliases(), "yay", "-Syu", "-R", false);
+		super(new SoftwareAliases(), "yay", "-Syu --needed --noconfirm", "-R", false);
 	}
 }
