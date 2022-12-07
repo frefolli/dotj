@@ -30,8 +30,11 @@ public class PackageBean implements Bean {
 
 	@Override
 	public void validate() throws InvalidPackageBeanException {
-		// TODO Auto-generated method stub
-
+		try {
+			this.metadata.validate();
+		} catch (InvalidPackageMetadataBeanException e) {
+			throw new InvalidPackageBeanException();
+		}
 	}
 
 	public PackageMetadataBean getMetadata() {
@@ -65,27 +68,33 @@ public class PackageBean implements Bean {
 	}
 
 	public void setMetadata(PackageMetadataBean metadata) {
-		this.metadata = metadata;
+		if (metadata != null)
+			this.metadata = metadata;
 	}
 
 	public void setDependencies(List<String> dependencies) {
-		this.dependencies = dependencies;
+		if (dependencies != null)
+			this.dependencies = dependencies;
 	}
 
 	public void setSoftwares(List<String> softwares) {
-		this.softwares = softwares;
+		if (softwares != null)
+			this.softwares = softwares;
 	}
 
 	public void setFiles(Map<String, String> files) {
-		this.files = files;
+		if (files != null)
+			this.files = files;
 	}
 
 	public void setInstall(List<String> install) {
-		this.install = install;
+		if (install != null)
+			this.install = install;
 	}
 
 	public void setUninstall(List<String> uninstall) {
-		this.uninstall = uninstall;
+		if (uninstall != null)
+			this.uninstall = uninstall;
 	}
 
 	@Override
