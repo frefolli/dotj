@@ -1,5 +1,6 @@
 package system.beans;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -7,7 +8,7 @@ public class RepositoryBean implements Bean {
 	private List<String> packages = null;
 	
 	public RepositoryBean() {
-		// TODO
+		this.packages = new ArrayList<String>();
 	}
 
 	@Override

@@ -1,8 +1,11 @@
 package system.beans;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.TreeMap;
+
 import system.packaging.Package;
 
 /**
@@ -17,7 +20,12 @@ public class PackageBean implements Bean {
 	private List<String> uninstall = null;
 	
 	public PackageBean() {
-		// TODO Auto-generated constructor stub
+		PackageMetadataBean metadata = new PackageMetadataBean();
+		dependencies = new ArrayList<String>();
+		softwares = new ArrayList<String>();
+		files = new TreeMap<String, String>();
+		install = new ArrayList<String>();
+		uninstall = new ArrayList<String>();
 	}
 
 	@Override

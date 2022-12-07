@@ -2,12 +2,13 @@ package system.beans;
 
 import java.util.Map;
 import java.util.Objects;
+import java.util.TreeMap;
 
 public class SoftwareAliasesBean implements Bean {
 	private Map<String, String> aliases = null;
 	
 	public SoftwareAliasesBean() {
-		// TODO
+		aliases = new TreeMap<String, String>();
 	}
 	
 	public Map<String, String> getAliases() {
