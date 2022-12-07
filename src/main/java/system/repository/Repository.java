@@ -1,5 +1,8 @@
 package system.repository;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
 import system.packaging.Package;
 import system.temp.CannotCleanTemporaryDirectoryException;
@@ -13,13 +16,21 @@ public class Repository {
 	private static Repository instance = null;
 	private LocalRepository localRepository = null;
 	private RemoteRepository remoteRepository = null;
+	public static String httpRepositoryURL = "https://raw.githubusercontent.com/frefolli/dotfiles/master/repository";
 	
 	public static Repository getInstance() throws CannotOpenLocalRepository {
 		if (Repository.instance == null) {
+			Path repodir = Path.of(System.getProperty("user.home"), ".dotj/cache");
+			if (! Files.exists(repodir)) {
+				try {
+					Files.createDirectories(repodir);
+				} catch (IOException e) {
+					throw new CannotOpenLocalRepository(repodir.toString());
+				}
+			}
 			Repository.instance = new Repository(
-					new LocalRepository("/tmp/"),
-					RemoteRepositoryFactory.newHTTP(
-							"https://raw.githubusercontent.com/frefolli/dotfiles/master/repository"));
+					new LocalRepository(repodir.toString()),
+					RemoteRepositoryFactory.newHTTP(Repository.httpRepositoryURL));
 		}
 		return Repository.instance;
 	}
