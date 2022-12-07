@@ -41,7 +41,7 @@ public class DirectoryManager {
 	
 	public void copyDirectory(String directory, String destination) throws CannotCopyDirectoryException {
 		try {
-			Files.copy(Path.of(directory), Path.of(destination));
+			FileUtils.copyDirectory(new File(directory), new File(destination));
 		} catch(IOException e) {
 			throw new CannotCopyDirectoryException(directory, destination);
 		}
@@ -49,7 +49,7 @@ public class DirectoryManager {
 	
 	public void moveDirectory(String directory, String destination) throws CannotMoveDirectoryException {
 		try {
-			Files.move(Path.of(directory), Path.of(destination));
+			FileUtils.moveDirectory(new File(directory), new File(destination));
 		} catch(IOException e) {
 			throw new CannotMoveDirectoryException(directory, destination);
 		}
