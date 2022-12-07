@@ -66,7 +66,7 @@ public class InstallPackagesJob extends Job {
 			try {
 				Terminal.getInstance().copyFile(
 						Path.of(basedir, file).toString(),
-						Path.of(package_.getFiles().get(file)).toString());
+						package_.getFiles().get(file).replaceFirst("^~", System.getProperty("user.home")));
 			} catch (CannotCopyFileException e) {
 				System.out.println(e);
 				System.exit(1);
