@@ -59,7 +59,8 @@ public class InstallPackagesJob extends Job {
 		try {
 			basedir = Repository.getInstance().getPackagePath(package_.getMetadata().getName());
 		} catch (CannotOpenLocalRepository e1) {
-			return;
+			System.out.println(e1);
+			System.exit(1);
 		}
 		for (String file : package_.getFiles().keySet())
 			try {
@@ -67,7 +68,8 @@ public class InstallPackagesJob extends Job {
 						Path.of(basedir, file).toString(),
 						Path.of(package_.getFiles().get(file)).toString());
 			} catch (CannotCopyFileException e) {
-				return;
+				System.out.println(e);
+				System.exit(1);
 			}
 	}
 }
