@@ -28,4 +28,9 @@ public class PackageMetadata {
 	public String getVersion() {
 		return version;
 	}
+	
+	public String toString() {
+		return String.format("(package-metadata :name %s :author %s :date %s :version %s)",
+				name, author, date, version);
+	}
 }

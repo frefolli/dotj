@@ -47,7 +47,23 @@ public class Package {
 
 	@Override
 	public String toString() {
-		return "(package :metadata" + metadata + " :dependencies" + dependencies + " :softwares" + softwares
-				+ ", files=" + files + " :install" + install + " :uninstall" + uninstall + "";
+		String ss = String.format("(package :metadata %s", metadata.toString());
+		
+		if (this.dependencies != null && this.dependencies.size() > 0)
+			ss += " :dependencies " + this.dependencies.toString();
+		
+		if (this.softwares != null && this.softwares.size() > 0)
+			ss += " :softwares " + this.softwares.toString();
+		
+		if (this.files != null && this.files.size() > 0)
+			ss += " :files " + this.files.toString();
+		
+		if (this.install != null && this.install.size() > 0)
+			ss += " :install " + this.install.toString();
+		
+		if (this.uninstall != null && this.uninstall.size() > 0)
+			ss += " :uninstall " + this.uninstall.toString();
+		
+		return ss + ")";
 	}
 }
