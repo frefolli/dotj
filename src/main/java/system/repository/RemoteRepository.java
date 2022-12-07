@@ -8,14 +8,13 @@ public abstract class RemoteRepository {
 	protected String url = null;
 	
 	public RemoteRepository(String url) {
-		// TODO
+		this.url = url;
 	}
 	
 	public String getURL() {
-		// TODO
-		return null;
+		return this.url;
 	}
 	
 	public abstract List<Package> searchPackages(String name);
-	public abstract Package getPackage(String name);
+	public abstract Package downloadPackage(String name, String downloadDirectory);
 }

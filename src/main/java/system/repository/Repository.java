@@ -2,6 +2,10 @@ package system.repository;
 
 import java.util.List;
 import system.packaging.Package;
+import system.temp.CannotCleanTemporaryDirectoryException;
+import system.temp.CannotCreateTemporaryDirectoryException;
+import system.temp.TemporaryDirectory;
+import system.temp.TemporaryFactory;
 
 /* This class acts like a Proxy
  * */
@@ -22,13 +26,36 @@ public class Repository {
 		return this.localRepository.searchPackages(name);
 	}
 	
-	public Package getPackage(String name) {
+	public Package getPackage(String name) throws CannotFindPackageException {
 		Package package_ = null;
-		package_ = this.localRepository.getPackage(name);
+		try {
+			package_ = this.localRepository.getPackage(name);
+		} catch (CannotFindPackageException e) {
+			TemporaryDirectory env = null;
+			try {
+				env = TemporaryFactory.newDirectory();
+			} catch (CannotCreateTemporaryDirectoryException e1) {
+				return null;
+			}
+			package_ = this.remoteRepository.downloadPackage(name, env.getPath());
+			try {
+				this.localRepository.addPackage(package_, String.format("%s/%s", env.getPath(), name));
+			} catch (CannotCopyPackageException e1) {
+				return null;
+			} catch (CannotAddPackageToLocalRepositoryIndexFileException e1) {
+				return null;
+			}
+			
+			try {
+				env.clean();
+			} catch (CannotCleanTemporaryDirectoryException e1) {
+				return null;
+			}
+		}
 		return package_;
 	}
 	
-	public void cleanCache() {
+	public void cleanCache() throws CannotCleanCacheException {
 		this.localRepository.cleanCache();
 	}
 }

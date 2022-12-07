@@ -16,7 +16,7 @@ public class SSHRepository extends RemoteRepository {
 	}
 
 	@Override
-	public Package getPackage(String name) {
+	public Package downloadPackage(String name, String downloadDirectory) {
 		// TODO Auto-generated method stub
 		return null;
 	}

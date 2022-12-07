@@ -44,4 +44,10 @@ public class Package {
 	public List<String> getUninstall() {
 		return uninstall;
 	}
+
+	@Override
+	public String toString() {
+		return "(package :metadata" + metadata + " :dependencies" + dependencies + " :softwares" + softwares
+				+ ", files=" + files + " :install" + install + " :uninstall" + uninstall + "";
+	}
 }

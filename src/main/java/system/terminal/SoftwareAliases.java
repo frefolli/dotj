@@ -51,7 +51,7 @@ public class SoftwareAliases {
 	
 	public void load(String configFilePath) throws CannotLoadSoftwareAliasesFromFileException {
 		try {
-			system.beans.SoftwareAliasesBean bean = SoftwareAliasesBeanParser.getInstance().parseFromFile(configFilePath);
+			SoftwareAliasesBean bean = SoftwareAliasesBeanParser.getInstance().parseFromFile(configFilePath);
 			bean.validate();
 			this.aliases = new TreeMap<String, String>(bean.getAliases());
 		} catch (CannotParseSoftwareAliasesBeanFromFileException e) {

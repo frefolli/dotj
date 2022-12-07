@@ -1,13 +1,12 @@
 package system.repository;
 
 public class RemoteRepositoryFactory {
-	public SSHRepository newSSH(String url) {
+	public static SSHRepository newSSH(String url) {
 		// TODO
 		return null;
 	}
 	
-	public HTTPRepository newHTTP(String url) {
-		// TODO
-		return null;
+	public static HTTPRepository newHTTP(String url) {
+		return new HTTPRepository(url);
 	}
 }
