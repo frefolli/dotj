@@ -2,6 +2,7 @@ package system.main;
 
 import java.util.Queue;
 import java.util.TreeMap;
+import java.nio.file.Path;
 import java.util.ArrayDeque;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +10,8 @@ import system.packaging.Package;
 import system.repository.CannotFindPackageException;
 import system.repository.CannotOpenLocalRepository;
 import system.repository.Repository;
+import system.terminal.CannotCopyFileException;
+import system.terminal.Terminal;
 
 public class InstallPackagesJob extends Job {
 	private List<String> packages = null;
@@ -37,6 +40,9 @@ public class InstallPackagesJob extends Job {
 					}
 				}
 			}
+			for (String packageName : packagesNeeded.keySet())
+				this.installPackage(packagesNeeded.get(packageName));
+			Terminal.getInstance().commitInstall();
 		} catch (CannotOpenLocalRepository e) {
 			e.printStackTrace();
 			System.exit(1);
@@ -44,5 +50,24 @@ public class InstallPackagesJob extends Job {
 			e.printStackTrace();
 			System.exit(1);
 		}
+	}
+	
+	private void installPackage(Package package_) {
+		for (String software : package_.getSoftwares())
+			Terminal.getInstance().installSoftware(software);
+		String basedir = null;
+		try {
+			basedir = Repository.getInstance().getPackagePath(package_.getMetadata().getName());
+		} catch (CannotOpenLocalRepository e1) {
+			return;
+		}
+		for (String file : package_.getFiles().keySet())
+			try {
+				Terminal.getInstance().copyFile(
+						Path.of(basedir, file).toString(),
+						Path.of(package_.getFiles().get(file)).toString());
+			} catch (CannotCopyFileException e) {
+				return;
+			}
 	}
 }

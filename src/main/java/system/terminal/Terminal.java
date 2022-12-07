@@ -57,4 +57,12 @@ public class Terminal {
 	public void uninstallSoftware(String software) {
 		this.softwareManager.uninstallSoftware(software);
 	}
+
+	public void commitInstall() {
+		this.softwareManager.commitInstall();
+	}
+
+	public void commitUninstall() {
+		this.softwareManager.commitUninstall();
+	}
 }

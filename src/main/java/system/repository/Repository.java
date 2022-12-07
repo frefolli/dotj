@@ -86,4 +86,8 @@ public class Repository {
 	public void cleanCache() throws CannotCleanCacheException {
 		this.localRepository.cleanCache();
 	}
+
+	public String getPackagePath(String name) {
+		return this.localRepository.getPackagePath(name);
+	}
 }
