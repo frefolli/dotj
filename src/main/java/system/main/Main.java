@@ -14,8 +14,8 @@ public class Main {
 		try {
 			repository = new Repository(
 					new LocalRepository("/tmp/"),
-					RemoteRepositoryFactory.newHTTP("https://"));
-			List<Package> packages = repository.searchPackages("");
+					RemoteRepositoryFactory.newHTTP("https://raw.githubusercontent.com/frefolli/dotfiles/master/repository"));
+			List<Package> packages = repository.searchPackages("vim");
 			System.out.println(packages.toString());
 		} catch (CannotOpenLocalRepository e) {
 			// TODO Auto-generated catch block
