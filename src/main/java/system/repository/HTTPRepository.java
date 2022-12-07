@@ -52,6 +52,7 @@ public class HTTPRepository extends RemoteRepository {
 			TemporaryDirectory env = TemporaryFactory.newDirectory();
 			URL remoteIndex = new URL(String.format("%s/index.yml", url));
 			File localIndex = new File(String.format("%s/index.yml", env.getPath()));
+			System.out.println(String.format("downloading %s to %s", remoteIndex, localIndex));
 			FileUtils.copyURLToFile(remoteIndex, localIndex);
 			RepositoryBean bean = RepositoryBeanParser.getInstance().parseFromFile(localIndex.getAbsolutePath());
 			env.clean();
@@ -75,6 +76,7 @@ public class HTTPRepository extends RemoteRepository {
 			env = TemporaryFactory.newDirectory();
 			URL remoteIndex = new URL(String.format("%s/%s/index.yml", url, name));
 			File localIndex = new File(String.format("%s/index.yml", env.getPath()));
+			System.out.println(String.format("downloading %s to %s", remoteIndex, localIndex));
 			FileUtils.copyURLToFile(remoteIndex, localIndex);
 			PackageBean bean = PackageBeanParser.getInstance().parseFromFile(localIndex.getAbsolutePath());
 			env.clean();
@@ -94,16 +96,17 @@ public class HTTPRepository extends RemoteRepository {
 
 	@Override
 	public Package downloadPackage(String name, String downloadDirectory) throws CannotDownloadPackageException {
-		TemporaryDirectory env;
 		try {
 			URL remoteIndex = new URL(String.format("%s/%s/index.yml", url, name));
 			Terminal.getInstance().createDirectory(String.format("%s/%s", downloadDirectory, name));
 			File localIndex = new File(String.format("%s/%s/index.yml", downloadDirectory, name));
+			System.out.println(String.format("downloading %s to %s", remoteIndex, localIndex));
 			FileUtils.copyURLToFile(remoteIndex, localIndex);
 			PackageBean bean = PackageBeanParser.getInstance().parseFromFile(localIndex.getAbsolutePath());
 			for (String file : bean.getFiles().keySet()) {
 				remoteIndex = new URL(String.format("%s/%s/%s", url, name, file));
 				localIndex = new File(String.format("%s/%s/%s", downloadDirectory, name, file));
+				System.out.println(String.format("downloading %s to %s", remoteIndex, localIndex));
 				FileUtils.copyURLToFile(remoteIndex, localIndex);
 			}
 			return bean.build();
