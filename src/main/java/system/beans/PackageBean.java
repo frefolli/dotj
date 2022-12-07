@@ -3,7 +3,11 @@ package system.beans;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import system.packaging.Package;
 
+/**
+ * this class also act as a Builder
+ * */
 public class PackageBean implements Bean {
 	private PackageMetadataBean metadata = null;
 	private List<String> dependencies = null;
@@ -93,5 +97,9 @@ public class PackageBean implements Bean {
 		return Objects.equals(dependencies, other.dependencies) && Objects.equals(files, other.files)
 				&& Objects.equals(install, other.install) && Objects.equals(metadata, other.metadata)
 				&& Objects.equals(softwares, other.softwares) && Objects.equals(uninstall, other.uninstall);
+	}
+	
+	public Package build() {
+		return new Package(metadata.build(), dependencies, softwares, files, install, uninstall);
 	}
 }

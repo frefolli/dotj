@@ -2,6 +2,10 @@
 
 A simple package manager written with Java and tested with Sonarqube CE
 
+## Developer Notes
+
+This project should be tested under a posix-compatible system because file attributes/permissions for temp dir/file are granted with posix mechanics.
+
 ## Repository index
 
 ### JSON

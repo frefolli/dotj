@@ -1,8 +1,12 @@
 package system.beans;
 
-import java.util.List;
 import java.util.Objects;
 
+import system.packaging.PackageMetadata;
+
+/**
+ * this class also act as a Builder
+ * */
 public class PackageMetadataBean implements Bean {
 	private String name = null;
 	private String author = null;
@@ -66,5 +70,9 @@ public class PackageMetadataBean implements Bean {
 		PackageMetadataBean other = (PackageMetadataBean) obj;
 		return Objects.equals(author, other.author) && Objects.equals(date, other.date)
 				&& Objects.equals(name, other.name) && Objects.equals(version, other.version);
+	}
+	
+	public PackageMetadata build() {
+		return new PackageMetadata(name, author, date, version);
 	}
 }
