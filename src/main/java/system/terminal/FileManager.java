@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+import org.apache.commons.io.FileUtils;
+
 public class FileManager {
 	private static FileManager instance = null;
 	
@@ -35,7 +37,7 @@ public class FileManager {
 	
 	public void copyFile(String file, String destination) throws CannotCopyFileException {
 		try {
-			Files.copy(Path.of(file), Path.of(destination));
+			FileUtils.copyFile(Path.of(file).toFile(), Path.of(destination).toFile());
 		} catch (IOException e) {
 			throw new CannotCopyFileException(file, destination);
 		}
