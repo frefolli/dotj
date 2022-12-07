@@ -7,21 +7,20 @@ public class JsonBeanParser {
 	private JsonObjectMapper jsonObjectMapper = null;
 	
 	public static JsonBeanParser getInstance() {
-		// TODO
-		return null;
+		if (JsonBeanParser.instance == null)
+			JsonBeanParser.instance = new JsonBeanParser();
+		return JsonBeanParser.instance;
 	}
 	
 	public JsonBeanParser() {
-		// TODO
+		this.jsonObjectMapper = JsonObjectMapper.getInstance();
 	}
 
-	public Bean parseFromString(String text, Class<?> beanClass) {
-		// TODO
-		return null;
+	public Bean parseFromString(String text, Class<?> beanClass) throws CannotParseJsonFromStringException {
+		return this.jsonObjectMapper.parseFromString(text, beanClass);
 	}
 
-	public Bean parseFromFile(String text, Class<?> beanClass) {
-		// TODO
-		return null;
+	public Bean parseFromFile(String path, Class<?> beanClass) throws CannotParseJsonFromFileException {
+		return this.jsonObjectMapper.parseFromFile(path, beanClass);
 	}
 }

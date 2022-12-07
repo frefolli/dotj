@@ -1,5 +1,7 @@
 package system.parser;
 
+import system.json.CannotParseJsonFromFileException;
+import system.json.CannotParseJsonFromStringException;
 import system.json.JsonBeanParser;
 import system.yaml.CannotParseYamlFromFileException;
 import system.yaml.CannotParseYamlFromStringException;
@@ -21,7 +23,11 @@ public abstract class BeanParser {
 		try {
 			return this.yamlParser.parseFromString(text, this.beanClass);
 		} catch (CannotParseYamlFromStringException e) {
-			throw new CannotParseBeanFromStringException(text);
+			try {
+				return this.jsonParser.parseFromString(text, this.beanClass);
+			} catch (CannotParseJsonFromStringException e1) {
+				throw new CannotParseBeanFromStringException(text);
+			}
 		}
 	}
 	
@@ -29,7 +35,11 @@ public abstract class BeanParser {
 		try {
 			return this.yamlParser.parseFromFile(path, beanClass);
 		} catch (CannotParseYamlFromFileException e) {
-			throw new CannotParseBeanFromFileException(path);
+			try {
+				return this.jsonParser.parseFromFile(path, beanClass);
+			} catch (CannotParseJsonFromFileException e1) {
+				throw new CannotParseBeanFromFileException(path);
+			}
 		}
 	}
 }

@@ -7,20 +7,20 @@ public class JsonBeanDumper {
 	private JsonObjectMapper jsonObjectMapper = null;
 	
 	public static JsonBeanDumper getInstance() {
-		// TODO
-		return null;
+		if (JsonBeanDumper.instance == null)
+			JsonBeanDumper.instance = new JsonBeanDumper();
+		return JsonBeanDumper.instance;
 	}
 	
 	public JsonBeanDumper() {
-		// TODO
+		this.jsonObjectMapper = JsonObjectMapper.getInstance();
 	}
 	
-	public String dumpToString(Bean bean) {
-		// TODO
-		return null;
+	public String dumpToString(Bean bean) throws CannotDumpToJsonStringException {
+		return this.jsonObjectMapper.dumpToString(bean);
 	}
 	
-	public void dumpToFile(Bean bean, String path) {
-		// TODO
+	public void dumpToFile(Bean bean, String path) throws CannotDumpToJsonFileException {
+		this.jsonObjectMapper.dumpToFile(bean, path);
 	}
 }
